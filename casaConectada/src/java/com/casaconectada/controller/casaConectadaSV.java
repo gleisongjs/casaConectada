@@ -43,22 +43,17 @@ public class casaConectadaSV extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action.equals("layla")) {
-            
-                    
-            
-                
-            
-            
+        
             if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
 
-                float aux;
+                float centimetro;
                 
-                aux = (float) Float.parseFloat((String) request.getParameter("distancia"));
-                Sensor.SensorStatic.setDistancia(""+ aux);
+                centimetro = (float) Float.parseFloat((String) request.getParameter("distancia"));
+                Sensor.SensorStatic.setDistancia(""+ centimetro);
                 
-                if (aux != 0 && aux < 75)
+                if (centimetro != 0 && centimetro < 75)
                 {
-                    twittando.tw("@Gleisonjsilva O Sistema layla acabou de liberar 1.2 L de água. Distância da layla ao sensor: "+aux+" centimetros.");
+                    twittando.tw("@Gleisonjsilva O Sistema layla acabou de liberar 1.0 Litro de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
                 }
                 
                 //Sensor.SensorStatic.setDistancia(request.getParameter("distancia"));
