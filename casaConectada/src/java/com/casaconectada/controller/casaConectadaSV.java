@@ -6,8 +6,6 @@ import com.casaconectada.entity.Sensor;
 
 
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,7 +51,7 @@ public class casaConectadaSV extends HttpServlet {
                 
                 if (centimetro != 0 && centimetro < 75)
                 {
-                    twittando.tw("@Gleisonjsilva O Sistema layla acabou de liberar 1.0 Litro de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
+                    twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 1 L de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
                 }
                 
                 //Sensor.SensorStatic.setDistancia(request.getParameter("distancia"));
@@ -144,9 +142,5 @@ public class casaConectadaSV extends HttpServlet {
 
         request.getSession().setAttribute("agua", btnAgua);
 
-    }
-    
-    
-    
-    
+    } 
 }
