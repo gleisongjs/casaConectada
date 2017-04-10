@@ -51,7 +51,7 @@ public class casaConectadaSV extends HttpServlet {
                 
                 if (centimetro != 0 && centimetro < 75)
                 {
-                    twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 1 L de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
+                    twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 0,5 L de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
                 }
                 
                 //Sensor.SensorStatic.setDistancia(request.getParameter("distancia"));
