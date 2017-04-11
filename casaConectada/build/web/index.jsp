@@ -68,7 +68,7 @@
                 <h1 class="ls-title-intro ls-ico-home">Página inicial</h1>
                 <div class="col-md-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><span class="glyphicon glyphicon-alert"></span> Conhecendo a layla</div>
+                        <div class="panel-heading"><span class="glyphicon glyphicon-heart"></span> Conhecendo a layla</div>
                         <div class="panel-body">
                             <div class="form-group">
 
