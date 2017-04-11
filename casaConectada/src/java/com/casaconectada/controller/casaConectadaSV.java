@@ -49,7 +49,7 @@ public class casaConectadaSV extends HttpServlet {
                 centimetro = (float) Float.parseFloat((String) request.getParameter("distancia"));
                 Sensor.SensorStatic.setDistancia(""+ centimetro);
                 
-                if (centimetro != 0 && centimetro < 75)
+                if (centimetro != 0 && centimetro < 70)
                 {
                     twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 0,5 L de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
                 }
