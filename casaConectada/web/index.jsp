@@ -68,33 +68,34 @@
                 <h1 class="ls-title-intro ls-ico-home">Página inicial</h1>
                 <div class="col-md-12">
                     <div class="panel panel-default">
+                        <div class="panel-heading"><span class="glyphicon glyphicon-alert"></span> Conhecendo a layla</div>
+                        <div class="panel-body">
+                            <div class="form-group">
 
-                        <!-- 1ª linha-->
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img data-u="image" src="public/img/layla.JPG" alt="layla" class="img-responsive"/> 
-                                <div class="caption">
-                                    <h6 class="ls-title-6">Conhecendo a layla</h6>
-                                    <p> A layla é uma cachora da raça labrador retriever. Essa é uma raça canina originária de Labrador no Canadá. Utilizado originalmente para a caça de aves aquáticas, o labrador é conhecido como uma raça versátil, inteligente e dócil </p>
+                                <div class="col-md-12">
+                                    <img data-u="image" src="public/img/layla.JPG" alt="layla" class="img-responsive"/> 
+                                    <div class="caption">
+                                        <h6 class="ls-title-6">Labrador retriever</h6>
+                                        <p> A layla é uma cachorra da raça labrador retriever. Essa é uma raça canina 
+                                            originária de Labrador no Canadá. Utilizado originalmente para a caça de aves aquáticas, 
+                                            o labrador é conhecido como uma raça versátil, inteligente e dócil. </p>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
-                                <img data-u="image" src="public/img/layla_1.JPG" alt="layla_1" class="img-responsive"/>
-                                <div class="caption">
-                                    <h6 class="ls-title-6">Cachorra extremamente amorosa</h6>
-                                    <p> Essa raça tem como características a sua fidelidade, afeto e cuidado com seus donos.</p>
-                                </div>
+                            <div class="form-group">                                
+                                <div class="col-md-12">
+                                    <img data-u="image" src="public/img/layla_1.JPG" alt="layla_1" class="img-responsive"/>
+                                    <div class="caption">
+                                        <h6 class="ls-title-6">Cachorra extremamente amorosa</h6>
+                                        <p> Essa raça tem como características a sua fidelidade, afeto e cuidado com seus donos.</p>
+                                    </div>
+                                </div>                                 
                             </div>
                         </div>
-                        <!-- Fim da primeira linha-->
-
-
                     </div>
                 </div>
             </div>
-
         </main>
         <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
     </div>        
