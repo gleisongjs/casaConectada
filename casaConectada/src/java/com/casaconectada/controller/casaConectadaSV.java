@@ -36,9 +36,6 @@ public class casaConectadaSV extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         
-        
-        
-        
         request.getSession().setAttribute("led", btnLed);
         request.getSession().setAttribute("agua", btnAgua);
 
@@ -73,6 +70,8 @@ public class casaConectadaSV extends HttpServlet {
                         
             request.setAttribute("resultado", msg);
             request.getRequestDispatcher("layla.jsp").forward(request, response);
+            
+            
 
             return;
         }
@@ -148,20 +147,20 @@ public class casaConectadaSV extends HttpServlet {
 
     } 
     
-//        private boolean save(HttpServletRequest request) {
-//        Sensor.SensorStatic sensor = new Sensor.SensorStatic();
-//        sensor.setId(Integer.parseInt(request.getParameter("id")));
-//        sensor.setDistancia(request.getParameter("distancia"));
-//        sensor.setTempoAtual(request.getParameter("tempoAtual"));
-//        sensor.setCont(request.getParameter("cont"));
-//        
-//        if (sensor.getId() == 0) {
-//
-//            return new SensorDao().incluir(sensor);
-//
-//        } else {
-//            return new SensorDao().alterar(sensor);
-//        }
-//}
+    private boolean save(HttpServletRequest request) {
+        Sensor.SensorStatic sensor = new Sensor.SensorStatic();
+        sensor.setId(Integer.parseInt(request.getParameter("id")));
+        sensor.setDistancia(request.getParameter("nome"));
+        sensor.setTempoAtual(request.getParameter("sexo"));
+        sensor.setCont(request.getParameter("telefone"));
         
+        if (sensor.getId() == 0) {
+
+            return new SensorDao().incluir(sensor);
+
+        } else {
+            return new SensorDao().alterar(sensor);
+        }
+    }
+    
 }
