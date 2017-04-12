@@ -42,17 +42,7 @@ public class casaConectadaSV extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        
-        
-        request.getSession().setAttribute("led", btnLed);
-        request.getSession().setAttribute("agua", btnAgua);
-
-        String action = request.getParameter("action");
-
-        if (action.equals("layla")) {
-            
-            
-            Connection conn = ConnectionFactory.getConnection();
+        Connection conn = ConnectionFactory.getConnection();
         
         PreparedStatement ps = null;
         
@@ -65,7 +55,7 @@ public class casaConectadaSV extends HttpServlet {
             ps.setString(2, request.getParameter("tempoAtual"));
             ps.setString(3, request.getParameter("cont"));
             ps.executeUpdate();
-            testdb = "Sensor Cadastrada com Sucesso";
+            testdb = "Sensor Cadastrado com Sucesso";
             
                
         } catch (SQLException ex) {
@@ -75,6 +65,18 @@ public class casaConectadaSV extends HttpServlet {
         } finally{
             ConnectionFactory.closeConnection(conn, ps);
         }
+        
+        
+        
+        request.getSession().setAttribute("led", btnLed);
+        request.getSession().setAttribute("agua", btnAgua);
+
+        String action = request.getParameter("action");
+
+        if (action.equals("layla")) {
+            
+            
+            
         
             if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
 
