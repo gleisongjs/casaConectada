@@ -54,7 +54,6 @@ public class casaConectadaSV extends HttpServlet {
             ps.setString(1, request.getParameter("distancia"));
             ps.setString(2, request.getParameter("tempoAtual"));
             ps.setString(3, request.getParameter("cont"));
-            
             ps.executeUpdate();
             testdb = "Pessoa Cadastrada com Sucesso";
             
