@@ -3,6 +3,7 @@ package com.casaconectada.controller;
 import com.casaconectada.twitter.TwitterCasa;
 
 import com.casaconectada.entity.Sensor;
+import com.casaconectada.persistence.SensorDao;
 
 
 import java.io.IOException;
@@ -33,6 +34,9 @@ public class casaConectadaSV extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        
+        
         
         
         request.getSession().setAttribute("led", btnLed);
@@ -143,4 +147,21 @@ public class casaConectadaSV extends HttpServlet {
         request.getSession().setAttribute("agua", btnAgua);
 
     } 
+    
+//        private boolean save(HttpServletRequest request) {
+//        Sensor.SensorStatic sensor = new Sensor.SensorStatic();
+//        sensor.setId(Integer.parseInt(request.getParameter("id")));
+//        sensor.setDistancia(request.getParameter("distancia"));
+//        sensor.setTempoAtual(request.getParameter("tempoAtual"));
+//        sensor.setCont(request.getParameter("cont"));
+//        
+//        if (sensor.getId() == 0) {
+//
+//            return new SensorDao().incluir(sensor);
+//
+//        } else {
+//            return new SensorDao().alterar(sensor);
+//        }
+//}
+        
 }
