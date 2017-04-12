@@ -165,7 +165,7 @@ public class SensorDao {
             return lstCadastro;
         }
         
-        sql = "SELECT * FROM TabelaSensor ORDER BY nome;";
+        sql = "SELECT * FROM TabelaSensor ORDER BY distancia;";
         
         try {
             ps = conn.prepareStatement(sql);

@@ -1,5 +1,6 @@
 package com.casaconectada.controller;
 
+import com.casaconectada.connection.ConnectionFactory;
 import com.casaconectada.twitter.TwitterCasa;
 
 import com.casaconectada.entity.Sensor;
@@ -7,6 +8,11 @@ import com.casaconectada.persistence.SensorDao;
 
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +32,7 @@ public class casaConectadaSV extends HttpServlet {
     Sensor.SensorStatic sensor = new Sensor.SensorStatic();
     ConexaoHttp conexaoHttp = new ConexaoHttp();
     String msg = "";
+    String testdb = "";
     public static String btnLed = "f";
     public static String btnAgua = "f";
     Session s;
@@ -35,6 +42,30 @@ public class casaConectadaSV extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        Connection conn = ConnectionFactory.getConnection();
+        
+        PreparedStatement ps = null;
+        
+        String sql = "INSERT INTO  sensor(distancia,tempoatual,cont) VALUES(?,?,?);";
+        
+        try {
+            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, request.getParameter("distancia"));
+            ps.setString(2, request.getParameter("tempoAtual"));
+            ps.setString(3, request.getParameter("cont"));
+            
+            ps.executeUpdate();
+            testdb = "Pessoa Cadastrada com Sucesso";
+            
+               
+        } catch (SQLException ex) {
+            Logger.getLogger(casaConectadaSV.class.getName()).log(Level.SEVERE, null, ex);
+            testdb = "Ops! deu ruim";
+            System.out.println(ex);
+        } finally{
+            ConnectionFactory.closeConnection(conn, ps);
+        }
         
         request.getSession().setAttribute("led", btnLed);
         request.getSession().setAttribute("agua", btnAgua);
@@ -66,6 +97,7 @@ public class casaConectadaSV extends HttpServlet {
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
             msg += "<hr/><br/> Tempo Atual: " + Sensor.SensorStatic.getTempoAtual() + " - Minutos";
             msg += "<hr/><br/> Quantidade: " + Sensor.SensorStatic.getCont();
+            msg += "<hr/><br/> Teste db: " + testdb;
             
                         
             request.setAttribute("resultado", msg);
@@ -150,9 +182,9 @@ public class casaConectadaSV extends HttpServlet {
     private boolean save(HttpServletRequest request) {
         Sensor.SensorStatic sensor = new Sensor.SensorStatic();
         sensor.setId(Integer.parseInt(request.getParameter("id")));
-        sensor.setDistancia(request.getParameter("nome"));
-        sensor.setTempoAtual(request.getParameter("sexo"));
-        sensor.setCont(request.getParameter("telefone"));
+        sensor.setDistancia(request.getParameter("distancia"));
+        sensor.setTempoAtual(request.getParameter("tempoAtual"));
+        sensor.setCont(request.getParameter("cont"));
         
         if (sensor.getId() == 0) {
 
@@ -161,6 +193,13 @@ public class casaConectadaSV extends HttpServlet {
         } else {
             return new SensorDao().alterar(sensor);
         }
+        
+        
     }
+//    if (save(request)) {
+//                request.setAttribute("msg", "Operação realizada com Sucesso");
+//            } else {
+//                request.setAttribute("msg", "Ops!! Operação não realizada");
+//            }
     
 }
