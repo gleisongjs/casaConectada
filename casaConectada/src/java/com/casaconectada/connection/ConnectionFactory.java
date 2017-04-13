@@ -18,28 +18,35 @@ import java.util.logging.Logger;
  * @author Gleisongjs
  */
 public class ConnectionFactory {
-     private static Connection conn = null;
+    private static Connection conn = null;
     private final static String SERVIDOR = "localhost";
+    //private final static String SERVIDOR = "177.35.62.234";    //endereço do servidor
     private final static String BANCO_DADOS = "arduino";
     private final static String PORTA = "5433";
+    //private final static String PORTA = "3306"; porta do mysql
     private final static String USUARIO = "postgres";
+    //private final static String USUARIO = "root"; //usuário do mysql
     private final static String SENHA = "jsilva996";
+
 
     private static Connection conectar() {
         try {
             Class.forName("org.postgresql.Driver"); //Biblioteca do pstgresql
-
+           // Class.forName("com.mysql.jdbc.Driver"); //Biblioteca do mysql
+            
             System.out.println("Conexão com sucessso!!");
             return DriverManager.getConnection("jdbc:postgresql://" + SERVIDOR + ":" + PORTA + "/" + BANCO_DADOS, USUARIO, SENHA);
         } catch (SQLException ex) {
             Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
-
+            
             return null;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
-
+            
             return null;
         }
+        
+
     }
 
     public static Connection getConnection() {
@@ -85,5 +92,6 @@ public class ConnectionFactory {
             Logger.getLogger(ConnectionFactory.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     
 }

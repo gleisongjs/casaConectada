@@ -4,7 +4,7 @@ import com.casaconectada.connection.ConnectionFactory;
 import com.casaconectada.twitter.TwitterCasa;
 
 import com.casaconectada.entity.Sensor;
-import com.casaconectada.persistence.SensorDao;
+
 
 
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class casaConectadaSV extends HttpServlet {
     Sensor.SensorStatic sensor = new Sensor.SensorStatic();
     ConexaoHttp conexaoHttp = new ConexaoHttp();
     String msg = "";
-    String testdb = "";
+    
     public static String btnLed = "f";
     public static String btnAgua = "f";
     Session s;
@@ -40,7 +40,13 @@ public class casaConectadaSV extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String testdb = "";
         response.setContentType("text/html;charset=UTF-8");
+
+                
+        
+        request.getSession().setAttribute("led", btnLed);
+        request.getSession().setAttribute("agua", btnAgua);
         
         Connection conn = ConnectionFactory.getConnection();
         
@@ -55,28 +61,24 @@ public class casaConectadaSV extends HttpServlet {
             ps.setString(2, request.getParameter("tempoAtual"));
             ps.setString(3, request.getParameter("cont"));
             ps.executeUpdate();
-            testdb = "Sensor Cadastrado com Sucesso";
+            //testdb = "Sensor Cadastrado com Sucesso";
             
                
         } catch (SQLException ex) {
             Logger.getLogger(casaConectadaSV.class.getName()).log(Level.SEVERE, null, ex);
-            testdb = "Ops! deu ruim";
+            //testdb = "Ops! deu ruim";
             System.out.println(ex);
         } finally{
             ConnectionFactory.closeConnection(conn, ps);
         }
-        
-        
-        
-        request.getSession().setAttribute("led", btnLed);
-        request.getSession().setAttribute("agua", btnAgua);
+            
 
         String action = request.getParameter("action");
 
         if (action.equals("layla")) {
             
-            
-            
+                            
+        
         
             if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
 
@@ -101,7 +103,7 @@ public class casaConectadaSV extends HttpServlet {
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
             msg += "<hr/><br/> Tempo Atual: " + Sensor.SensorStatic.getTempoAtual() + " - Minutos";
             msg += "<hr/><br/> Quantidade: " + Sensor.SensorStatic.getCont();
-            msg += "<hr/><br/> Teste db: " + testdb;
+            //msg += "<hr/><br/> Teste db: " + testdb;
             
                         
             request.setAttribute("resultado", msg);
@@ -180,26 +182,28 @@ public class casaConectadaSV extends HttpServlet {
         request.getSession().setAttribute("led", btnLed);
 
         request.getSession().setAttribute("agua", btnAgua);
+        
+
 
     } 
     
-    private boolean save(HttpServletRequest request) {
-        Sensor.SensorStatic sensor = new Sensor.SensorStatic();
-        sensor.setId(Integer.parseInt(request.getParameter("id")));
-        sensor.setDistancia(request.getParameter("distancia"));
-        sensor.setTempoAtual(request.getParameter("tempoAtual"));
-        sensor.setCont(request.getParameter("cont"));
-        
-        if (sensor.getId() == 0) {
-
-            return new SensorDao().incluir(sensor);
-
-        } else {
-            return new SensorDao().alterar(sensor);
-        }
-        
-        
-    }
+//    private boolean save(HttpServletRequest request) {
+//        Sensor.SensorStatic sensor = new Sensor.SensorStatic();
+//        sensor.setId(Integer.parseInt(request.getParameter("id")));
+//        sensor.setDistancia(request.getParameter("distancia"));
+//        sensor.setTempoAtual(request.getParameter("tempoAtual"));
+//        sensor.setCont(request.getParameter("cont"));
+//        
+//        if (sensor.getId() == 0) {
+//
+//            return new SensorDao().incluir(sensor);
+//
+//        } else {
+//            return new SensorDao().alterar(sensor);
+//        }
+//        
+//        
+//    }
 //    if (save(request)) {
 //                request.setAttribute("msg", "Operação realizada com Sucesso");
 //            } else {
