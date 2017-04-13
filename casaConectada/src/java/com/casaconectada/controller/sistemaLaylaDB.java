@@ -42,10 +42,23 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
            
            rs = ps.executeQuery();
            while(rs.next()){
-               res += "ID: " + rs.getInt("id");
+               res += " <div class=\"panel-body\">\n" +
+"                                <div class=\"form-group\">";
+               res += "<hr/>";
+               res += "<div class=\"col-md-3\">";
+               res += "<br/>ID: " + rs.getInt("id");
+               res += "</div>";
+               res += "<div class=\"col-md-3\">";
                res += "<br/>Distância: "+rs.getString("distancia");
+               res += "</div>";
+               res += "<div class=\"col-md-3\">";
                res += "<br/>Tempo Atual: "+rs.getString("tempoatual");
+               res += "</div>";
+               res += "<div class=\"col-md-3\">";
                res += "<br/>Quantidade: "+rs.getString("cont");
+               res += "</div>";
+               res += "</div>\n" +
+"                        </div>";
                res += "<hr/>";
            }
            
