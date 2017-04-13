@@ -51,6 +51,7 @@
                 <nav class="ls-menu">
                     <ul>
                         <li><a href="casaConectadaSV?action=layla"class="ls-ico-checkmark-circle" title="layla">SISTEMA LAYLA</a></li>
+                        <li><a href="sistemaLaylaDB?action=layladb"class="ls-ico-checkmark-circle" title="layla">DB SISTEMA LAYLA </a></li>
                         <li><a href="DroneSV?action=drone"class="ls-ico-checkmark-circle" title="drone">SISTEMA DRONE</a></li>
                         <li><a href="#" class="ls-ico-checkmark-circle" title="alterar">SISTEMA ORANGE</a></li>
                         <li><a href="#" class="ls-ico-checkmark-circle" title="listar">SISTEMA RASBERRY</a></li>

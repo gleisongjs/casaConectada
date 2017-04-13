@@ -10,6 +10,7 @@ import com.casaconectada.entity.Sensor;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -146,6 +147,43 @@ public class casaConectadaSV extends HttpServlet {
             request.getRequestDispatcher("layla.jsp").forward(request, response);
 
         }
+        
+        if (action.equals ("layladb")){
+             
+        
+        
+        ResultSet rs = null;
+        String res="";
+        
+        String sqli = "SELECT * FROM sensor ORDER BY distancia;";
+        
+       try {
+           ps = conn.prepareStatement(sqli);
+           
+           rs = ps.executeQuery();
+           while(rs.next()){
+               res += "ID: " + rs.getInt("id");
+               res += "<br/>Distância: "+rs.getString("distancia");
+               res += "<br/>Tempo Atual: "+rs.getString("tempoatual");
+               res += "<br/>Quantidade: "+rs.getString("cont");
+               res += "<hr/>";
+           }
+           
+           
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(sistemaLaylaDB.class.getName()).log(Level.SEVERE, null, ex);
+           res = "Erro ao listar o sensor!";
+       }finally{
+           ConnectionFactory.closeConnection(conn, ps, rs);
+       }
+       
+       request.setAttribute("resultado", res);
+       request.getRequestDispatcher("laylaDb.jsp").forward(request, response);
+
+        }
+        
+        
 
         if (action.equals("agua")) {
             if (btnAgua == "t") {
@@ -178,6 +216,8 @@ public class casaConectadaSV extends HttpServlet {
             request.getRequestDispatcher("layla.jsp").forward(request, response);
 
         }
+        
+        
 
         request.getSession().setAttribute("led", btnLed);
 
