@@ -4,8 +4,6 @@ import com.casaconectada.connection.ConnectionFactory;
 import com.casaconectada.twitter.TwitterCasa;
 
 import com.casaconectada.entity.Sensor;
-
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
