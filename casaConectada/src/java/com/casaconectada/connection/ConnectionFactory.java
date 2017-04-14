@@ -24,7 +24,7 @@ public class ConnectionFactory {
     private final static String BANCO_DADOS = "arduino";
     private final static String PORTA = "5433";
     //private final static String PORTA = "3306"; porta do mysql
-    private final static String USUARIO = "postgres";
+    private final static String USUARIO = "gleisongjs";
     //private final static String USUARIO = "root"; //usuário do mysql
     private final static String SENHA = "jsilva996";
 
