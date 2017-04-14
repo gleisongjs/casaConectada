@@ -59,7 +59,7 @@ public class casaConectadaSV extends HttpServlet {
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, request.getParameter("distancia"));
-            ps.setString(2, request.getParameter("tempoAtual"));
+            ps.setString(2, request.getParameter("tempoAtual/60000"));
             ps.setString(3, request.getParameter("cont"));
             ps.executeUpdate();
             //testdb = "Sensor Cadastrado com Sucesso";
