@@ -19,26 +19,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.catalina.Session;
 
-
 /**
  *
  * @author Gleisongjs
  */
 public class casaConectadaSV extends HttpServlet {
-    
-   
+
     TwitterCasa twittando = new TwitterCasa();
-        
+
     Sensor.SensorStatic sensor = new Sensor.SensorStatic();
     ConexaoHttp conexaoHttp = new ConexaoHttp();
     String msg = "";
-        
-   
+
     String data = "dd/MM/YYYY";
     String hora = "HH:mm:ss";
     String data1, hora1;
-    
-    
+
     public static String btnLed = "f";
     public static String btnAgua = "f";
     Session s;
@@ -47,29 +43,30 @@ public class casaConectadaSV extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //String testdb = "";
-        
-        
-        response.setContentType("text/html;charset=UTF-8"); 
-        
+
+        response.setContentType("text/html;charset=UTF-8");
+
         DateHora();
-        
-        Sensor.SensorStatic.setDistancia(request.getParameter("distancia"));
-        Sensor.SensorStatic.setTempoAtual(request.getParameter("tempoAtual"));
-        Sensor.SensorStatic.setCont(request.getParameter("cont"));
-        Sensor.SensorStatic.setData(data1);
-        Sensor.SensorStatic.setHora(hora1);
-        
+
+        if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
+            Sensor.SensorStatic.setDistancia(request.getParameter("distancia"));
+            Sensor.SensorStatic.setTempoAtual(request.getParameter("tempoAtual"));
+            Sensor.SensorStatic.setCont(request.getParameter("cont"));
+            Sensor.SensorStatic.setData(data1);
+            Sensor.SensorStatic.setHora(hora1);
+        }
+
         request.getSession().setAttribute("led", btnLed);
         request.getSession().setAttribute("agua", btnAgua);
-        
+
         Connection conn = ConnectionFactory.getConnection();
-        
+
         PreparedStatement ps = null;
-        
+
         String sql = "INSERT INTO  sensor(distancia,tempoatual,cont,data, hora) VALUES(?,?,?,?,?);";
-        
+
         try {
-            DateHora();
+
             ps = conn.prepareStatement(sql);
             ps.setString(1, Sensor.SensorStatic.getDistancia());
             ps.setString(2, Sensor.SensorStatic.getTempoAtual());
@@ -78,16 +75,14 @@ public class casaConectadaSV extends HttpServlet {
             ps.setString(5, Sensor.SensorStatic.getHora());
             ps.executeUpdate();
             //testdb = "Sensor Cadastrado com Sucesso";
-            
-               
+
         } catch (SQLException ex) {
             Logger.getLogger(casaConectadaSV.class.getName()).log(Level.SEVERE, null, ex);
             //testdb = "Ops! deu ruim";
             System.out.println(ex);
-        } finally{
+        } finally {
             ConnectionFactory.closeConnection(conn, ps);
         }
-            
 
         String action = request.getParameter("action");
 
@@ -95,25 +90,21 @@ public class casaConectadaSV extends HttpServlet {
             if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
 
                 float centimetro;
-                
+
                 centimetro = (float) Float.parseFloat((String) request.getParameter("distancia"));
-                                
-                if (centimetro != 0 && centimetro < 70)
-                {
-                     
-                    twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 0,5 L de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
-                }             
+
+                if (centimetro != 0 && centimetro < 70) {
+
+                    twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 0,5 L de água. Distância da layla ao sensor: " + centimetro + " Centimetros.");
+                }
             }
 
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
             msg += "<hr/><br/> Tempo Atual: " + Sensor.SensorStatic.getTempoAtual() + " - Minutos";
             msg += "<hr/><br/> Quantidade: " + Sensor.SensorStatic.getCont();
-                        
-                        
+
             request.setAttribute("resultado", msg);
             request.getRequestDispatcher("layla.jsp").forward(request, response);
-            
-            
 
             return;
         }
@@ -128,21 +119,8 @@ public class casaConectadaSV extends HttpServlet {
 
                 if (conexaoHttp.com("ledon")) {
                     btnLed = "t";
-                    
+
                 }
-            }
-
-             if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
-
-                float centimetro;
-                
-                centimetro = (float) Float.parseFloat((String) request.getParameter("distancia"));
-                                
-                if (centimetro != 0 && centimetro < 70)
-                {
-                     
-                    twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 0,5 L de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
-                }             
             }
 
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
@@ -154,8 +132,6 @@ public class casaConectadaSV extends HttpServlet {
             request.getRequestDispatcher("layla.jsp").forward(request, response);
 
         }
-        
-        
 
         if (action.equals("agua")) {
             if (btnAgua == "t") {
@@ -170,19 +146,6 @@ public class casaConectadaSV extends HttpServlet {
                 }
             }
 
-            if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
-
-                float centimetro;
-                
-                centimetro = (float) Float.parseFloat((String) request.getParameter("distancia"));
-                                
-                if (centimetro != 0 && centimetro < 70)
-                {
-                     
-                    twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 0,5 L de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
-                }             
-            }
-
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
             msg += "<hr/><br/> Tempo Atual: " + Sensor.SensorStatic.getTempoAtual() + " - Minutos";
             msg += "<hr/><br/> Quantidade: " + Sensor.SensorStatic.getCont();
@@ -192,26 +155,21 @@ public class casaConectadaSV extends HttpServlet {
             request.getRequestDispatcher("layla.jsp").forward(request, response);
 
         }
-        
-        
 
         request.getSession().setAttribute("led", btnLed);
 
         request.getSession().setAttribute("agua", btnAgua);
-        
 
+    }
 
-    } 
-    
 // Metodo que faz o request da data e hora atual
-    public void DateHora (){
-        
+    public void DateHora() {
+
         java.util.Date agora = new java.util.Date();
         SimpleDateFormat formata = new SimpleDateFormat(data);
         data1 = formata.format(agora);
         formata = new SimpleDateFormat(hora);
-        hora1 = formata.format(agora);  
-        
-        
+        hora1 = formata.format(agora);
+
     }
 }
