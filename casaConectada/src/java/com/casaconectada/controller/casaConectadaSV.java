@@ -34,6 +34,7 @@ public class casaConectadaSV extends HttpServlet {
     Sensor.SensorStatic sensor = new Sensor.SensorStatic();
     ConexaoHttp conexaoHttp = new ConexaoHttp();
     String msg = "";
+    String testtw;
     
    
     String data = "dd/MM/YYYY";
@@ -94,29 +95,25 @@ public class casaConectadaSV extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action.equals("layla")) {
-            
-                            
-           
-       
-        
             if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
 
                 float centimetro;
                 
                 centimetro = (float) Float.parseFloat((String) request.getParameter("distancia"));
-                Sensor.SensorStatic.setDistancia(""+ centimetro);
+                //Sensor.SensorStatic.setDistancia(""+ centimetro);
                 
                 if (centimetro != 0 && centimetro < 70)
                 {
-                    twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 0,5 L de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
+                     testtw = "ok";
+                    //twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 0,5 L de água. Distância da layla ao sensor: "+centimetro+" Centimetros.");
                 }
                 
                 //Sensor.SensorStatic.setDistancia(request.getParameter("distancia"));
                 
-                Sensor.SensorStatic.setCont(request.getParameter("cont"));
-                Integer x;
-                x = (Integer) Integer.parseInt((String) request.getParameter("tempoAtual"));
-                Sensor.SensorStatic.setTempoAtual("" + (x / 60000));
+               // Sensor.SensorStatic.setCont(request.getParameter("cont"));
+                //Integer x;
+                //x = (Integer) Integer.parseInt((String) request.getParameter("tempoAtual"));
+                //Sensor.SensorStatic.setTempoAtual("" + (x / 60000));
                 //Sensor.SensorStatic.setData(data1);
                 //Sensor.SensorStatic.setHora(hora1);
                 
@@ -125,7 +122,7 @@ public class casaConectadaSV extends HttpServlet {
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
             msg += "<hr/><br/> Tempo Atual: " + Sensor.SensorStatic.getTempoAtual() + " - Minutos";
             msg += "<hr/><br/> Quantidade: " + Sensor.SensorStatic.getCont();
-            //msg += "<hr/><br/> data: " + Sensor.SensorStatic.getData();
+            msg += "<hr/><br/> twitter: " + testtw;
             //msg += "<hr/><br/> hora: " + Sensor.SensorStatic.getHora();
             //msg += "<hr/><br/> Teste db: " + testdb;
             
