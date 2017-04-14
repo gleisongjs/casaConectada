@@ -59,7 +59,7 @@ public class casaConectadaSV extends HttpServlet {
             
             ps = conn.prepareStatement(sql);
             ps.setString(1, request.getParameter("distancia"));
-            ps.setString(2, request.getParameter("tempoAtual/60000"));
+            ps.setString(2, request.getParameter("tempoAtual"));
             ps.setString(3, request.getParameter("cont"));
             ps.executeUpdate();
             //testdb = "Sensor Cadastrado com Sucesso";
@@ -164,7 +164,7 @@ public class casaConectadaSV extends HttpServlet {
            while(rs.next()){
                res += "ID: " + rs.getInt("id");
                res += "<br/>Distância: "+rs.getString("distancia");
-               res += "<br/>Tempo Atual: "+rs.getString("tempoatual");
+               res += "<br/>Tempo Atual: "+rs.getString("tempoatual/60000");
                res += "<br/>Quantidade: "+rs.getString("cont");
                res += "<hr/>";
            }
