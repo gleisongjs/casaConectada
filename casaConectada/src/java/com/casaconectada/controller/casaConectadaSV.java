@@ -98,7 +98,7 @@ public class casaConectadaSV extends HttpServlet {
                 Sensor.SensorStatic.setCont(request.getParameter("cont"));
                 Integer x;
                 x = (Integer) Integer.parseInt((String) request.getParameter("tempoAtual"));
-                Sensor.SensorStatic.setTempoAtual("" + (x / 60000));
+                Sensor.SensorStatic.setTempoAtual("" + (x));
             }
 
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
@@ -135,7 +135,7 @@ public class casaConectadaSV extends HttpServlet {
                 Sensor.SensorStatic.setCont(request.getParameter("cont"));
                 Integer x;
                 x = (Integer) Integer.parseInt((String) request.getParameter("tempoAtual"));
-                Sensor.SensorStatic.setTempoAtual("" + (x / 60000));
+                Sensor.SensorStatic.setTempoAtual("" + (x));
             }
 
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
@@ -204,7 +204,7 @@ public class casaConectadaSV extends HttpServlet {
                 Sensor.SensorStatic.setCont(request.getParameter("cont"));
                 Integer x;
                 x = (Integer) Integer.parseInt((String) request.getParameter("tempoAtual"));
-                Sensor.SensorStatic.setTempoAtual("" + (x / 60000));
+                Sensor.SensorStatic.setTempoAtual("" + (x));
             }
 
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
