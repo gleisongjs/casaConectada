@@ -164,7 +164,7 @@ public class casaConectadaSV extends HttpServlet {
            while(rs.next()){
                res += "ID: " + rs.getInt("id");
                res += "<br/>Distância: "+rs.getString("distancia");
-               res += "<br/>Tempo Atual: "+rs.getString("tempoatual/60000");
+               res += "<br/>Tempo Atual: "+rs.getString("tempoatual");
                res += "<br/>Quantidade: "+rs.getString("cont");
                res += "<hr/>";
            }
