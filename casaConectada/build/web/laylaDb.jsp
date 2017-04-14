@@ -1,6 +1,6 @@
 <%-- 
-    Document   : layla
-    Created on : 08/03/2017, 11:23:43
+    Document   : listaDB
+    Created on : 26/03/2017, 15:05:10
     Author     : Gleisongjs
 --%>
 
@@ -21,8 +21,8 @@
         <link href="public/css/costumizado.css" rel="stylesheet">
 
         <link href="public/stylesheets/locastyle.css" rel="stylesheet" type="text/css">
-        <link rel="icon" sizes="192x192" href="images/portal.png">
-        <link rel="apple-touch-icon" href="public/img//portal.png">
+        <link rel="icon" sizes="192x192" href="images/labrador.png">
+        <link rel="apple-touch-icon" href="public/img//labrador.png">
         <!-- Ele funciona da mesma com toda a versão do jQuery 1.x para 2.x -->
         <script src="public/js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="public/js/jquery.min.js" type="text/javascript"></script>
@@ -53,7 +53,7 @@
                         <li><a href="casaConectadaSV?action=layla"class="ls-ico-checkmark-circle" title="layla">SISTEMA LAYLA</a></li>
                         <li><a href="sistemaLaylaDB?action=layladb"class="ls-ico-checkmark-circle" title="layla">DB SISTEMA LAYLA </a></li>
                         <li><a href="DroneSV?action=drone"class="ls-ico-checkmark-circle" title="drone">SISTEMA DRONE</a></li>
-                        <li><a href="#" class="ls-ico-checkmark-circle" title="alterar">SISTEMA ORANGE</a></li>
+                        <li><a href="TwitterSV" class="ls-ico-checkmark-circle" title="alterar">SISTEMA ORANGE</a></li>
                         <li><a href="#" class="ls-ico-checkmark-circle" title="listar">SISTEMA RASBERRY</a></li>
                     </ul>
                 </nav>
@@ -65,64 +65,23 @@
         <script type="text/javascript" src="public/js/jquery-1.9.1.min.js"></script>
 
         <main class="ls-main ">
-            <div class="container col-md-12">
-                <h1 class="ls-title-intro ls-ico-home"> SISTEMA LAYLA </h1>
-                
-                <div class="panel panel-default col-md-12">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-tint"></span> Monitor</div>
-                    <div class="panel-body">  
-                        ${resultado}
+            <div class="container">
+                <h1 class="ls-title-intro ls-ico-cloud">Banco de dados</h1>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><span class="glyphicon glyphicon-sort-by-attributes"></span> Lista</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+
+                                ${resultado}                
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="panel panel-default col-md-12">
-                    <div class="panel-heading"><span class="glyphicon glyphicon-cog"></span> Painel de Controle</div>
-                    <div class="panel-body col-md-3"> </div>
-                    <div class="panel-body col-md-3"> 
-                        <a href="casaConectadaSV?action=led"
-
-
-                           <button  type="button" id="led" >
-
-                                <%
-                                    HttpSession ses = request.getSession(true);
-
-                                    String s = (String) ses.getAttribute("led");
-
-                                    if (s == "f") {
-                                %>    
-                                <script class="btn btn-success" >  Ligar LED</script>
-
-                                <%} else {%>
-                                <script class="btn btn-danger" >  Desligar LED</script>
-                                <%}%>
-                            </button> </a>
-                    </div>
-
-                    <div class="panel-body col-md-3"> 
-                        <a href="casaConectadaSV?action=agua"
-                           <button type="button" id="agua" >
-
-                                <%
-
-                                    String agua = (String) ses.getAttribute("agua");
-
-                                    if (agua == "f") {
-
-                                %>    
-
-                                <script class="btn btn-success" >  Liberar ÁGUA</script>
-                                <%} else {%>
-
-                                <script class="btn btn-danger" >  Fechar
-                                    ÁGUA</script>
-                                <%}%>
-                            </button> </a>
-                    </div>
-                    <div class="panel-body col-md-3"> </div>
-                </div>
-
+            </div>
+        </main>
         <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
     </div>        
 </body>
 </html>
+

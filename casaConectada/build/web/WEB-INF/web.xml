@@ -8,6 +8,10 @@
         <servlet-name>DroneSV</servlet-name>
         <servlet-class>com.casaconectada.controller.DroneSV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>sistemaLaylaDB</servlet-name>
+        <servlet-class>com.casaconectada.controller.sistemaLaylaDB</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>casaConectadaSV</servlet-name>
         <url-pattern>/casaConectadaSV</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>DroneSV</servlet-name>
         <url-pattern>/DroneSV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sistemaLaylaDB</servlet-name>
+        <url-pattern>/sistemaLaylaDB</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
