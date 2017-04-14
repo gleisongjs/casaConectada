@@ -4,6 +4,7 @@ import com.casaconectada.connection.ConnectionFactory;
 import com.casaconectada.twitter.TwitterCasa;
 
 import com.casaconectada.entity.Sensor;
+import com.casaconectada.util.Funcoes;
 
 
 
@@ -12,6 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -29,10 +32,17 @@ public class casaConectadaSV extends HttpServlet {
     
    
     TwitterCasa twittando = new TwitterCasa();
+    GregorianCalendar calendar = new GregorianCalendar();
     
     Sensor.SensorStatic sensor = new Sensor.SensorStatic();
     ConexaoHttp conexaoHttp = new ConexaoHttp();
     String msg = "";
+    
+   
+    String data = "dd/MM/YYYY";
+    String hora = "HH:mm:ss";
+    String data1, hora1;
+    
     
     public static String btnLed = "f";
     public static String btnAgua = "f";
@@ -79,7 +89,9 @@ public class casaConectadaSV extends HttpServlet {
         if (action.equals("layla")) {
             
                             
-        
+        DateHora();
+         
+       
         
             if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
 
@@ -99,11 +111,14 @@ public class casaConectadaSV extends HttpServlet {
                 Integer x;
                 x = (Integer) Integer.parseInt((String) request.getParameter("tempoAtual"));
                 Sensor.SensorStatic.setTempoAtual("" + (x / 60000));
+                
             }
 
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
             msg += "<hr/><br/> Tempo Atual: " + Sensor.SensorStatic.getTempoAtual() + " - Minutos";
             msg += "<hr/><br/> Quantidade: " + Sensor.SensorStatic.getCont();
+            msg += "<hr/><br/> data: " + data1;
+            msg += "<hr/><br/> hora: " + hora1;
             //msg += "<hr/><br/> Teste db: " + testdb;
             
                         
@@ -227,27 +242,15 @@ public class casaConectadaSV extends HttpServlet {
 
     } 
     
-//    private boolean save(HttpServletRequest request) {
-//        Sensor.SensorStatic sensor = new Sensor.SensorStatic();
-//        sensor.setId(Integer.parseInt(request.getParameter("id")));
-//        sensor.setDistancia(request.getParameter("distancia"));
-//        sensor.setTempoAtual(request.getParameter("tempoAtual"));
-//        sensor.setCont(request.getParameter("cont"));
-//        
-//        if (sensor.getId() == 0) {
-//
-//            return new SensorDao().incluir(sensor);
-//
-//        } else {
-//            return new SensorDao().alterar(sensor);
-//        }
-//        
-//        
-//    }
-//    if (save(request)) {
-//                request.setAttribute("msg", "Operação realizada com Sucesso");
-//            } else {
-//                request.setAttribute("msg", "Ops!! Operação não realizada");
-//            }
-    
+// Metodo que faz o request da data e hora atual
+    public void DateHora (){
+        
+        java.util.Date agora = new java.util.Date();
+        SimpleDateFormat formata = new SimpleDateFormat(data);
+        data1 = formata.format(agora);
+        formata = new SimpleDateFormat(hora);
+        hora1 = formata.format(agora);  
+        
+        
+    }
 }
