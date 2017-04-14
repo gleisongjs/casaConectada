@@ -13,6 +13,8 @@ public  class  Sensor {
     private static String cont;
     private static String tempoAtual;
     private static String Distancia;
+    private static String Data;
+    private static String Hora;
 
         public static int getId() {
             return id;
@@ -44,6 +46,22 @@ public  class  Sensor {
 
         public static void setDistancia(String aDistancia) {
             Distancia = aDistancia;
+        }
+
+        public static String getData() {
+            return Data;
+        }
+
+        public static void setData(String aData) {
+            Data = aData;
+        }
+
+        public static String getHora() {
+            return Hora;
+        }
+
+        public static void setHora(String aHora) {
+            Hora = aHora;
         }
 
         

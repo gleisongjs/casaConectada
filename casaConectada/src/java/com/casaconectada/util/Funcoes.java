@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -13,13 +14,20 @@ import java.util.logging.Logger;
  */
 public class Funcoes {
     
-    public static Date strToDate(String data){
-        try { 
-            return new SimpleDateFormat("dd/MM/yyyy").parse(data);
-        } catch (ParseException ex) {
-            Logger.getLogger(Funcoes.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
+    String data = "dd/MM/YYYY";
+    String hora = "h:mm - a";
+    String data1, hora1;
+    
+    
+    public void DataHora (){
+        
+        java.util.Date agora = new java.util.Date();
+        SimpleDateFormat formata = new SimpleDateFormat(data);
+        data1 = formata.format(agora);
+        formata = new SimpleDateFormat(hora);
+        hora1 = formata.format(agora);  
+        
+        
     }
     
 }

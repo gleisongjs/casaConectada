@@ -6,12 +6,13 @@ import com.casaconectada.twitter.TwitterCasa;
 import com.casaconectada.entity.Sensor;
 
 
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -29,10 +30,16 @@ public class casaConectadaSV extends HttpServlet {
     
    
     TwitterCasa twittando = new TwitterCasa();
-    
+        
     Sensor.SensorStatic sensor = new Sensor.SensorStatic();
     ConexaoHttp conexaoHttp = new ConexaoHttp();
     String msg = "";
+    
+   
+    String data = "dd/MM/YYYY";
+    String hora = "HH:mm:ss";
+    String data1, hora1;
+    
     
     public static String btnLed = "f";
     public static String btnAgua = "f";
@@ -41,10 +48,18 @@ public class casaConectadaSV extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String testdb = "";
-        response.setContentType("text/html;charset=UTF-8");
-
-                
+        //String testdb = "";
+        
+        
+        response.setContentType("text/html;charset=UTF-8"); 
+        
+        DateHora();
+        
+        Sensor.SensorStatic.setDistancia(request.getParameter("distancia"));
+        Sensor.SensorStatic.setTempoAtual(request.getParameter("tempoAtual"));
+        Sensor.SensorStatic.setCont(request.getParameter("cont"));
+        Sensor.SensorStatic.setData(data1);
+        Sensor.SensorStatic.setHora(hora1);
         
         request.getSession().setAttribute("led", btnLed);
         request.getSession().setAttribute("agua", btnAgua);
@@ -53,14 +68,16 @@ public class casaConectadaSV extends HttpServlet {
         
         PreparedStatement ps = null;
         
-        String sql = "INSERT INTO  sensor(distancia,tempoatual,cont) VALUES(?,?,?);";
+        String sql = "INSERT INTO  sensor(distancia,tempoatual,cont,data, hora) VALUES(?,?,?,?,?);";
         
         try {
-            
+            DateHora();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, request.getParameter("distancia"));
-            ps.setString(2, request.getParameter("tempoAtual"));
-            ps.setString(3, request.getParameter("cont"));
+            ps.setString(1, Sensor.SensorStatic.getDistancia());
+            ps.setString(2, Sensor.SensorStatic.getTempoAtual());
+            ps.setString(3, Sensor.SensorStatic.getCont());
+            ps.setString(4, Sensor.SensorStatic.getData());
+            ps.setString(5, Sensor.SensorStatic.getHora());
             ps.executeUpdate();
             //testdb = "Sensor Cadastrado com Sucesso";
             
@@ -79,7 +96,8 @@ public class casaConectadaSV extends HttpServlet {
         if (action.equals("layla")) {
             
                             
-        
+           
+       
         
             if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
 
@@ -98,12 +116,17 @@ public class casaConectadaSV extends HttpServlet {
                 Sensor.SensorStatic.setCont(request.getParameter("cont"));
                 Integer x;
                 x = (Integer) Integer.parseInt((String) request.getParameter("tempoAtual"));
+
                 Sensor.SensorStatic.setTempoAtual("" + (x));
+
+                
             }
 
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
             msg += "<hr/><br/> Tempo Atual: " + Sensor.SensorStatic.getTempoAtual() + " - Minutos";
             msg += "<hr/><br/> Quantidade: " + Sensor.SensorStatic.getCont();
+            //msg += "<hr/><br/> data: " + Sensor.SensorStatic.getData();
+            //msg += "<hr/><br/> hora: " + Sensor.SensorStatic.getHora();
             //msg += "<hr/><br/> Teste db: " + testdb;
             
                         
@@ -145,41 +168,6 @@ public class casaConectadaSV extends HttpServlet {
             request.getSession().setAttribute("led", btnLed);
             request.setAttribute("resultado", msg);
             request.getRequestDispatcher("layla.jsp").forward(request, response);
-
-        }
-        
-        if (action.equals ("layladb")){
-             
-        
-        
-        ResultSet rs = null;
-        String res="";
-        
-        String sqli = "SELECT * FROM sensor ORDER BY distancia;";
-        
-       try {
-           ps = conn.prepareStatement(sqli);
-           
-           rs = ps.executeQuery();
-           while(rs.next()){
-               res += "ID: " + rs.getInt("id");
-               res += "<br/>Distância: "+rs.getString("distancia");
-               res += "<br/>Tempo Atual: "+rs.getString("tempoatual");
-               res += "<br/>Quantidade: "+rs.getString("cont");
-               res += "<hr/>";
-           }
-           
-           
-           
-       } catch (SQLException ex) {
-           Logger.getLogger(sistemaLaylaDB.class.getName()).log(Level.SEVERE, null, ex);
-           res = "Erro ao listar o sensor!";
-       }finally{
-           ConnectionFactory.closeConnection(conn, ps, rs);
-       }
-       
-       request.setAttribute("resultado", res);
-       request.getRequestDispatcher("laylaDb.jsp").forward(request, response);
 
         }
         
@@ -227,27 +215,15 @@ public class casaConectadaSV extends HttpServlet {
 
     } 
     
-//    private boolean save(HttpServletRequest request) {
-//        Sensor.SensorStatic sensor = new Sensor.SensorStatic();
-//        sensor.setId(Integer.parseInt(request.getParameter("id")));
-//        sensor.setDistancia(request.getParameter("distancia"));
-//        sensor.setTempoAtual(request.getParameter("tempoAtual"));
-//        sensor.setCont(request.getParameter("cont"));
-//        
-//        if (sensor.getId() == 0) {
-//
-//            return new SensorDao().incluir(sensor);
-//
-//        } else {
-//            return new SensorDao().alterar(sensor);
-//        }
-//        
-//        
-//    }
-//    if (save(request)) {
-//                request.setAttribute("msg", "Operação realizada com Sucesso");
-//            } else {
-//                request.setAttribute("msg", "Ops!! Operação não realizada");
-//            }
-    
+// Metodo que faz o request da data e hora atual
+    public void DateHora (){
+        
+        java.util.Date agora = new java.util.Date();
+        SimpleDateFormat formata = new SimpleDateFormat(data);
+        data1 = formata.format(agora);
+        formata = new SimpleDateFormat(hora);
+        hora1 = formata.format(agora);  
+        
+        
+    }
 }

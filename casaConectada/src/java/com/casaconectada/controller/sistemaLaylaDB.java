@@ -35,7 +35,7 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
         ResultSet rs = null;
         String res="";
         
-        String sql = "SELECT * FROM sensor ORDER BY id;";
+        String sql = "SELECT * FROM sensor ORDER BY id DESC;";
         
        try {
            ps = conn.prepareStatement(sql);
@@ -45,18 +45,24 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
                res += " <div class=\"panel-body\">\n" +
 "                                <div class=\"form-group\">";
                res += "<hr/>";
-               res += "<div class=\"col-md-3\">";
+               res += "<div class=\"col-md-2\">";
                res += "<br/>ID: " + rs.getInt("id");
                res += "</div>";
-               res += "<div class=\"col-md-3\">";
+               res += "<div class=\"col-md-2\">";
                res += "<br/>Distância: "+rs.getString("distancia");
                res += "</div>";
-               res += "<div class=\"col-md-3\">";
+               res += "<div class=\"col-md-2\">";
                res += "<br/>Tempo Atual: "+rs.getString("tempoatual");
                res += "</div>";
-               res += "<div class=\"col-md-3\">";
+               res += "<div class=\"col-md-2\">";
                res += "<br/>Quantidade: "+rs.getString("cont");
-               res += "</div>";
+               res += "</div>";               
+               res += "<div class=\"col-md-2\">";
+               res += "<br/>Data: "+rs.getString("data");
+               res += "</div>";               
+               res += "<div class=\"col-md-2\">";
+               res += "<br/>Hora: "+rs.getString("hora");
+               res += "</div>";               
                res += "</div>\n" +
 "                        </div>";
                res += "<hr/>";
