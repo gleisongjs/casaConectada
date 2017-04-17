@@ -35,7 +35,7 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
         ResultSet rs = null;
         String res="";
         
-        String sql = "SELECT * FROM sensor ORDER BY id DESC LIMIT 100;";
+        String sql = "SELECT * FROM sensor ORDER BY id DESC LIMIT 450;";
         
        try {
            ps = conn.prepareStatement(sql);
