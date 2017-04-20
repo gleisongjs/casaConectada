@@ -70,30 +70,38 @@
                 <div class="col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading"><span class="glyphicon glyphicon-heart-empty"></span> Conhecendo a layla</div>
+                       
                         <div class="panel-body">
+                                                        
+                            <div class="form-group">                                
+                                <div class="col-md-12">
+                                    <img data-u="image" src="public/img/sensor.JPG" alt="sensor" class="img-responsive"/>
+                                    <div class="caption">
+                                        <h6 class="ls-title-6">Funcionamento do Sistema </h6>
+                                        <p> O sensor que está na parede, direcionado para o solo, está constantemente medindo a distância. 
+                                        Quando a distância é menor de 50 cm (normalmente quando a layla coloca as duas patas superiores na parede
+                                         na direção do sensor), o sistema libera água durante 5 segundos, envia um twitter informando detalhes e permanece 
+                                        indisponível para liberar água por proximidade nas próximas 04 horas.</p>
+                                    </div>
+                                </div>                                 
+                            </div>
+                            
                             <div class="form-group">
 
                                 <div class="col-md-12">
                                     <img data-u="image" src="public/img/layla.JPG" alt="layla" class="img-responsive"/> 
                                     <div class="caption">
                                         <h6 class="ls-title-6">Labrador retriever</h6>
+                                        
                                         <p> A layla é uma cachorra da raça labrador retriever. Essa é uma raça canina 
                                             originária de Labrador no Canadá. Utilizado originalmente para a caça de aves aquáticas, 
                                             o labrador é conhecido como uma raça versátil, inteligente e dócil. </p>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group">                                
-                                <div class="col-md-12">
-                                    <img data-u="image" src="public/img/layla_1.JPG" alt="layla_1" class="img-responsive"/>
-                                    <div class="caption">
-                                        <h6 class="ls-title-6">Cachorra extremamente amorosa</h6>
-                                        <p> Essa raça tem como características a sua fidelidade, afeto e cuidado com seus donos.</p>
-                                    </div>
-                                </div>                                 
-                            </div>
+                            
                         </div>
+                        
                     </div>
                 </div>
             </div>
