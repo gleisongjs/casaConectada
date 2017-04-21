@@ -69,7 +69,7 @@
                 <h1 class="ls-title-intro ls-ico-home">Página inicial</h1>
                 <div class="col-md-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><span class="glyphicon glyphicon-heart-empty"></span> Conhecendo a layla</div>
+                        <div class="panel-heading"> Sistema Layla</div>
                        
                         <div class="panel-body">
                                                         
@@ -81,7 +81,7 @@
                                         <p> O sensor que está na parede, direcionado para o solo, está constantemente medindo a distância. 
                                         Quando a distância é menor de 50 cm (normalmente quando a layla coloca as duas patas superiores na parede
                                          na direção do sensor), o sistema libera água durante 5 segundos, envia um twitter informando detalhes e permanece 
-                                        indisponível para liberar água por proximidade nas próximas 04 horas.</p>
+                                        indisponível para liberar água nas próximas 04 horas.</p>
                                     </div>
                                 </div>                                 
                             </div>
