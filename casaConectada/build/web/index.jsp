@@ -78,7 +78,7 @@
                                     <img data-u="image" src="public/img/sensor.JPG" alt="sensor" class="img-responsive"/>
                                     <div class="caption">
                                         <h6 class="ls-title-6">Funcionamento do Sistema </h6>
-                                        <p> O sensor que está na parede, direcionado para o solo, está constantemente medindo a distância. 
+                                        <p class="text-justify lead"> O sensor que está na parede, direcionado para o solo, está constantemente medindo a distância. 
                                         Quando a distância é menor de 50 cm (normalmente quando a layla coloca as duas patas superiores na parede
                                          na direção do sensor), o sistema libera água durante 5 segundos, envia um twitter informando detalhes e permanece 
                                         indisponível para liberar água nas próximas 04 horas.</p>
@@ -93,7 +93,7 @@
                                     <div class="caption">
                                         <h6 class="ls-title-6">Labrador retriever</h6>
                                         
-                                        <p> A layla é uma cachorra da raça labrador retriever. Essa é uma raça canina 
+                                        <p class="text-justify lead"> A layla é uma cachorra da raça labrador retriever. Essa é uma raça canina 
                                             originária de Labrador no Canadá. Utilizado originalmente para a caça de aves aquáticas, 
                                             o labrador é conhecido como uma raça versátil, inteligente e dócil. </p>
                                     </div>
