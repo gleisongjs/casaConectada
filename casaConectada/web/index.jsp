@@ -64,50 +64,43 @@
         <script src="public/js/locastyle.js" type="text/javascript"></script>
         <script type="text/javascript" src="public/js/jquery-1.9.1.min.js"></script>
 
-        <main class="ls-main ">
+       <main class="ls-main ">
             <div class="container">
                 <h1 class="ls-title-intro ls-ico-home">Página inicial</h1>
                 <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading"> Sistema Layla</div>
-                       
-                        <div class="panel-body">
-                                                        
-                            <div class="form-group">                                
-                                <div class="col-md-12">
-                                    <img data-u="image" src="public/img/sensor.JPG" alt="sensor" class="img-responsive"/>
-                                    <div class="caption">
-                                        <h6 class="ls-title-6">Funcionamento do Sistema </h6>
-                                        <p class="text-justify lead"> O sensor que está na parede, direcionado para o solo, está constantemente medindo a distância. 
-                                        Quando a distância é menor de 50 cm (normalmente quando a layla coloca as duas patas superiores na parede
-                                         na direção do sensor), o sistema libera água durante 5 segundos, envia um twitter informando detalhes e permanece 
-                                        indisponível para liberar água nas próximas 04 horas.</p>
-                                    </div>
-                                </div>                                 
-                            </div>
-                            
-                            <div class="form-group">
+                    <ul class="list-group">
+                        <li class="list-group-item">
 
-                                <div class="col-md-12">
-                                    <img data-u="image" src="public/img/layla.JPG" alt="layla" class="img-responsive"/> 
-                                    <div class="caption">
-                                        <h6 class="ls-title-6">Labrador retriever</h6>
-                                        
-                                        <p class="text-justify lead"> A layla é uma cachorra da raça labrador retriever. Essa é uma raça canina 
-                                            originária de Labrador no Canadá. Utilizado originalmente para a caça de aves aquáticas, 
-                                            o labrador é conhecido como uma raça versátil, inteligente e dócil. </p>
-                                    </div>
-                                </div>
+
+                            <img data-u="image" src="public/img/sensor.JPG"  alt="sensor" class="img-responsive center-block"/>
+                            <div class="caption">
+                                <h2 class="ls-title-2">Funcionamento do Sistema </h2>
+                                <p class="text-justify lead"> O sensor que está na parede, direcionado para o solo, está constantemente medindo a distância. 
+                                    Quando a distância é menor de 50 cm (normalmente quando a layla coloca as duas patas superiores na parede
+                                    na direção do sensor), o sistema libera água durante 5 segundos, envia um twitter informando detalhes e permanece 
+                                    indisponível para liberar água por proximidade nas próximas 04 horas.</p>
                             </div>
-                            
-                        </div>
-                        
-                    </div>
+
+                        </li>
+
+                        <li class="list-group-item">   
+
+                            <img data-u="image" src="public/img/layla.JPG" alt="layla" class="img-responsive center-block"/> 
+                            <div class="caption">
+                                <h2 class="ls-title-2">Labrador retriever</h2>
+
+                                <p class="text-justify lead" > A layla é uma cachorra da raça labrador retriever. Essa é uma raça canina 
+                                    originária de Labrador no Canadá. Utilizado originalmente para a caça de aves aquáticas, 
+                                    o labrador é conhecido como uma raça versátil, inteligente e dócil. </p>
+                            </div>
+
+                        </li>
                 </div>
             </div>
+
         </main>
         <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
-    </div>        
+           
 </body>
 </html>
 
