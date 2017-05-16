@@ -93,9 +93,9 @@ public class casaConectadaSV extends HttpServlet {
 
                 centimetro = (float) Float.parseFloat((String) request.getParameter("distancia"));
 
-                if (centimetro != 0 && centimetro < 50) {
+                if (centimetro != 0 && centimetro < 75) {
 
-                    twittando.tw("@GleisonJSilva O Sistema layla acabou de liberar 0,5 L de água. Distância da layla ao sensor: " + centimetro + " Centimetros.");
+                    twittando.tw("@GleisonJSilva O Sistema layla liberou 0,5 L de água. Distância da layla ao sensor: " + centimetro + " Centimetros.");
                 }
             }
 

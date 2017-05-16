@@ -76,7 +76,7 @@
                             <div class="caption">
                                 <h2 class="ls-title-2">Funcionamento do Sistema </h2>
                                 <p class="text-justify lead"> O sensor que está na parede, direcionado para o solo, está constantemente medindo a distância. 
-                                    Quando a distância é menor de 50 cm (normalmente quando a layla coloca as duas patas superiores na parede
+                                    Quando a distância é menor de 75 cm (normalmente quando a layla coloca as duas patas superiores na parede
                                     na direção do sensor), o sistema libera água durante 5 segundos, envia um twitter informando detalhes e permanece 
                                     indisponível para liberar água por proximidade nas próximas 04 horas.</p>
                             </div>
