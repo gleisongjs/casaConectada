@@ -29,6 +29,7 @@ public class casaConectadaSV extends HttpServlet {
 
     Sensor.SensorStatic sensor = new Sensor.SensorStatic();
     ConexaoHttp conexaoHttp = new ConexaoHttp();
+    
     String msg = "";
 
     String data = "dd/MM/YYYY";
