@@ -71,7 +71,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${libs.PostgreSQLDriver.classpath}</file>
+                    <file>${file.reference.postgresql-42.1.1.jre6.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
