@@ -19,13 +19,10 @@ import java.util.logging.Logger;
  */
 public class ConnectionFactory {
     private static Connection conn = null;
-    private final static String SERVIDOR = "localhost";
-    //private final static String SERVIDOR = "177.35.62.234";    //endereço do servidor
+    private final static String SERVIDOR = "localhost";    
     private final static String BANCO_DADOS = "arduino";
-    private final static String PORTA = "5432";
-    //private final static String PORTA = "3306"; porta do mysql
-    private final static String USUARIO = "gleisongjs";
-    //private final static String USUARIO = "root"; //usuário do mysql
+    private final static String PORTA = "5432";   
+    private final static String USUARIO = "gleisongjs";   
     private final static String SENHA = "jsilva996";
 
 
