@@ -2,6 +2,7 @@
 package com.casaconectada.persistence;
 
 import com.casaconectada.connection.ConnectionFactory;
+import com.casaconectada.controller.sistemaLaylaDB;
 import com.casaconectada.entity.Sensor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,20 +31,25 @@ public class SensorDao {
             return isOk;
         }
         
-        sql = "INSERT INTO TabelaSensor(distancia,tempoatual,cont) VALUES(?,?,?);";
-        
+        String sql = "INSERT INTO  sensor(distancia,tempoatual,cont,data,hora) VALUES(?,?,?,?,?);";
+
         try {
+
             ps = conn.prepareStatement(sql);
-            ps.setString(1, sensor.getDistancia());
-            ps.setString(2, sensor.getTempoAtual());
-            ps.setString(3, sensor.getCont());
+            ps.setString(1, Sensor.SensorStatic.getDistancia());
+            ps.setString(2, Sensor.SensorStatic.getTempoAtual());
+            ps.setString(3, Sensor.SensorStatic.getCont());
+            ps.setString(4, Sensor.SensorStatic.getData());
+            ps.setString(5, Sensor.SensorStatic.getHora());
             ps.executeUpdate();
+            //testdb = "Sensor Cadastrado com Sucesso";
             isOk = true;
              
             
             
         } catch (SQLException ex) {
             Logger.getLogger(SensorDao.class.getName()).log(Level.SEVERE, null, ex);
+            //testdb = "Ops! deu ruim";
         }finally{
             ConnectionFactory.closeConnection(conn, ps);
         }
@@ -61,25 +67,7 @@ public class SensorDao {
         if (conn == null){
             return isOk;
         }
-        
-        sql = "UPDATE TabelaSensor SET distancia=?,tempoatual=?,cont=?  WHERE id=?;";
-        
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, sensor.getDistancia());
-            ps.setString(2, sensor.getTempoAtual());
-            ps.setString(3, sensor.getCont());
-            ps.executeUpdate();
-            isOk = true;
-             
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(SensorDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            ConnectionFactory.closeConnection(conn, ps);
-        }
-        
+                        
         return isOk;
     }
 
@@ -94,7 +82,7 @@ public class SensorDao {
             return isOk;
         }
         
-        sql = "DELETE FROM TabelaSensor WHERE id=?;";
+        sql = "DELETE FROM sensor WHERE id=?;";
         
         try {
             ps = conn.prepareStatement(sql);
@@ -126,7 +114,7 @@ public class SensorDao {
             return sensor;
         }
         
-        sql = "SELECT * FROM TabelaSensor WHERE id=?;";
+        sql = "SELECT * FROM sensor WHERE id=?;";
         
         try {
             ps = conn.prepareStatement(sql);
@@ -139,6 +127,8 @@ public class SensorDao {
                 sensor.setDistancia(rs.getString("distancia"));
                 sensor.setTempoAtual(rs.getString("tempoatual"));
                 sensor.setCont(rs.getString("cont"));
+                sensor.setData(rs.getString("data"));
+                sensor.setHora(rs.getString("hora"));
                                
                      
             }
@@ -165,29 +155,48 @@ public class SensorDao {
             return lstCadastro;
         }
         
-        sql = "SELECT * FROM TabelaSensor ORDER BY distancia;";
+         String sql = "SELECT * FROM sensor ORDER BY id DESC LIMIT 200;";
+         String res="";
         
-        try {
-            ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
-            lstCadastro = new ArrayList<Sensor.SensorStatic>();
-            while(rs.next()){
-                
-                Sensor.SensorStatic sensor = new Sensor.SensorStatic();
-                sensor.setId(rs.getInt("id"));
-                sensor.setDistancia(rs.getString("distancia"));
-                sensor.setTempoAtual(rs.getString("tempoatual"));
-                sensor.setCont(rs.getString("cont"));
-                lstCadastro.add(sensor);
-                     
-            }
-                 
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(SensorDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
-            ConnectionFactory.closeConnection(conn, ps, rs);
-        }
+       try {
+           ps = conn.prepareStatement(sql);
+           
+           rs = ps.executeQuery();
+           while(rs.next()){
+               res += " <div class=\"panel-body\">\n" +
+"                                <div class=\"form-group\">";
+               res += "<hr/>";
+               res += "<div class=\"col-md-2\">";
+               res += "<br/>ID: " + rs.getInt("id");
+               res += "</div>";
+               res += "<div class=\"col-md-2\">";
+               res += "<br/>Distância: "+rs.getString("distancia");
+               res += "</div>";
+               res += "<div class=\"col-md-2\">";
+               res += "<br/>Tempo Atual: "+rs.getString("tempoatual");
+               res += "</div>";
+               res += "<div class=\"col-md-2\">";
+               res += "<br/>Quantidade: "+rs.getString("cont");
+               res += "</div>";               
+               res += "<div class=\"col-md-2\">";
+               res += "<br/>Data: "+rs.getString("data");
+               res += "</div>";               
+               res += "<div class=\"col-md-2\">";
+               res += "<br/>Hora: "+rs.getString("hora");
+               res += "</div>";               
+               res += "</div>\n" +
+"                        </div>";
+               res += "<hr/>";
+           }
+           
+           
+           
+       } catch (SQLException ex) {
+           Logger.getLogger(sistemaLaylaDB.class.getName()).log(Level.SEVERE, null, ex);
+           res = "Erro ao listar o sensor!";
+       }finally{
+           ConnectionFactory.closeConnection(conn, ps, rs);
+       }
         
         return lstCadastro;
     }
