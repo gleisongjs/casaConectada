@@ -30,7 +30,6 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
         
         if (action.equals ("layladb")){
         Connection conn = ConnectionFactory.getConnection();
-        
         PreparedStatement ps = null;
         ResultSet rs = null;
         String res="";

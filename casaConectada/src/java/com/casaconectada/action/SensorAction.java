@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.casaconectada.action;
 
 import com.casaconectada.controller.ConexaoHttp;
@@ -50,29 +46,29 @@ public class SensorAction {
         
         
         if (action.equals("layla")) {
-            if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
-
-                float centimetro;
-
-                centimetro = (float) Float.parseFloat((String) request.getParameter("distancia"));
-
-                if (centimetro != 0 && centimetro < 75) {
-
-                    twittando.tw("@GleisonJSilva O Sistema layla liberou 0,5 L de água. Distância da layla ao sensor: " + centimetro + " Centimetros.");
-                }
+            
+            //recebendo os dados
+            if (save(request)) {
+                request.setAttribute("msg", "Operação realizada com Sucesso!");
+            } else {
+                request.setAttribute("msg", "Erro ao realizar a operação!");
             }
-
+           
+            
+            
+            //String carregando dados para devolver a página layla
             msg = "<br/> Distância: " + Sensor.SensorStatic.getDistancia() + " - Centimetros";
             msg += "<hr/><br/> Tempo Atual: " + Sensor.SensorStatic.getTempoAtual() + " - Minutos";
             msg += "<hr/><br/> Quantidade: " + Sensor.SensorStatic.getCont();
 
             request.setAttribute("resultado", msg);
             request.getRequestDispatcher("layla.jsp").forward(request, response);
+            request.setAttribute("objSensor", new Sensor());
 
             return;
         }
         
-        
+        //on/off led
         if (action.equals("led")) {
             if (btnLed == "t") {
 
@@ -97,6 +93,8 @@ public class SensorAction {
 
         }
 
+        
+        //on/off água
         if (action.equals("agua")) {
             if (btnAgua == "t") {
 
@@ -127,41 +125,15 @@ public class SensorAction {
         
         
 
-        if (action.equals("novo")) {
-            request.setAttribute("objPessoa", new Sensor());
-            request.getRequestDispatcher("frmpessoa.jsp").forward(request, response);
-            return;
-        }
-        if (action.equals("listar")) {
-            request.setAttribute("lstPessoas", new SensorDao().getSensor());
-            request.getRequestDispatcher("lstpessoas.jsp").forward(request, response);
-            return;
-        }
-        if (action.equals("salvar")) {
-            if (save(request)) {
-                request.setAttribute("msg", "Operação realizada com Sucesso!");
-            } else {
-                request.setAttribute("msg", "Erro ao realizar a operação!");
-            }
-            request.setAttribute("objPessoa", new Sensor());
-            request.getRequestDispatcher("frmpessoa.jsp").forward(request, response);
-            return;
-        }
-        if (action.equals("editar")) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            request.setAttribute("objPessoa", new SensorDao().getSensor(id));
-            request.getRequestDispatcher("frmpessoa.jsp").forward(request, response);
-            return;
-        }
-        if (action.equals("excluir")) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            new SensorDao().Excluir(id);
-            request.setAttribute("lstPessoas", new SensorDao().getSensor());
-            request.getRequestDispatcher("lstpessoas.jsp").forward(request, response);
-        }
-
+//        if (action.equals("listar")) {
+//            request.setAttribute("lstSensor", new SensorDao().getSensor());
+//            request.getRequestDispatcher("lstsensor.jsp").forward(request, response);
+//            return;
+//        } 
+        
     }
 
+    //request dos dados de entrada
     private boolean save(HttpServletRequest request) {
 
        DateHora();
@@ -173,15 +145,25 @@ public class SensorAction {
             Sensor.SensorStatic.setData(data1);
             Sensor.SensorStatic.setHora(hora1);
         }
-        if (Sensor.SensorStatic.getId() == 0) {
-            return new SensorDao().incluir(sensor);
-        } else {
-            return new SensorDao().alterar(sensor);
-        }
+        
+        //condição para twittar
+            if (!(msg.equals(request.getParameter("distancia")) || request.getParameter("distancia") == null)) {
 
+                float centimetro;
+
+                centimetro = (float) Float.parseFloat((String) request.getParameter("distancia"));
+
+                if (centimetro != 0 && centimetro < 75) {
+
+                    twittando.tw("@GleisonJSilva O Sistema layla liberou 0,5 L de água. Distância da layla ao sensor: " + centimetro + " Centimetros.");
+                }
+            }
+        
+            return new SensorDao().incluir(sensor);
+        
     }
     
-    // Metodo que faz o request da data e hora atual
+    // request da data e hora atual
     public void DateHora() {
 
         java.util.Date agora = new java.util.Date();

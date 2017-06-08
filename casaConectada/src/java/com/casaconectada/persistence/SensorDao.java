@@ -122,7 +122,7 @@ public class SensorDao {
             rs = ps.executeQuery();
             
            if(rs.next()){
-                sensor = new Sensor.SensorStatic();
+                
                 Sensor.SensorStatic.setId(rs.getInt("id"));
                 Sensor.SensorStatic.setDistancia(rs.getString("distancia"));
                 Sensor.SensorStatic.setTempoAtual(rs.getString("tempoatual"));
@@ -146,47 +146,36 @@ public class SensorDao {
     
     public List<Sensor.SensorStatic> getSensor(){
         
-        List<Sensor.SensorStatic> lstCadastro = null;
+        List<Sensor.SensorStatic> lstSensor = null;
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
+        String res="";
         
         if (conn == null){
-            return lstCadastro;
+            return lstSensor;
         }
         
          String sql = "SELECT * FROM sensor ORDER BY id DESC LIMIT 200;";
-         String res="";
         
        try {
            ps = conn.prepareStatement(sql);
            
            rs = ps.executeQuery();
            while(rs.next()){
-               res += " <div class=\"panel-body\">\n" +
-"                                <div class=\"form-group\">";
-               res += "<hr/>";
-               res += "<div class=\"col-md-2\">";
-               res += "<br/>ID: " + rs.getInt("id");
-               res += "</div>";
-               res += "<div class=\"col-md-2\">";
-               res += "<br/>Distância: "+rs.getString("distancia");
-               res += "</div>";
-               res += "<div class=\"col-md-2\">";
-               res += "<br/>Tempo Atual: "+rs.getString("tempoatual");
-               res += "</div>";
-               res += "<div class=\"col-md-2\">";
-               res += "<br/>Quantidade: "+rs.getString("cont");
-               res += "</div>";               
-               res += "<div class=\"col-md-2\">";
-               res += "<br/>Data: "+rs.getString("data");
-               res += "</div>";               
-               res += "<div class=\"col-md-2\">";
-               res += "<br/>Hora: "+rs.getString("hora");
-               res += "</div>";               
-               res += "</div>\n" +
-"                        </div>";
-               res += "<hr/>";
+               
+               Sensor.SensorStatic sensor = new Sensor.SensorStatic();
+               
+             
+               sensor.setId(rs.getInt("id"));
+               sensor.setDistancia(rs.getString("distancia"));
+               sensor.setTempoAtual(rs.getString("tempoatual"));
+               sensor.setCont(rs.getString("cont"));
+               sensor.setData(rs.getString("data"));
+               sensor.setHora(rs.getString("hora"));
+               
+               
+               lstSensor.add(sensor);
            }
            
            
@@ -197,8 +186,9 @@ public class SensorDao {
        }finally{
            ConnectionFactory.closeConnection(conn, ps, rs);
        }
-        
-        return lstCadastro;
+       
+       return lstSensor;
+    
     }
     
 }
