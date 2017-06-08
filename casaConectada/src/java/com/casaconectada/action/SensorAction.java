@@ -121,15 +121,7 @@ public class SensorAction {
         request.getSession().setAttribute("led", btnLed);
 
         request.getSession().setAttribute("agua", btnAgua);
-        
-        
-        
-
-//        if (action.equals("listar")) {
-//            request.setAttribute("lstSensor", new SensorDao().getSensor());
-//            request.getRequestDispatcher("lstsensor.jsp").forward(request, response);
-//            return;
-//        } 
+ 
         
     }
 
