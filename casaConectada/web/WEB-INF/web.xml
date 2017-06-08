@@ -12,6 +12,10 @@
         <servlet-name>sistemaLaylaDB</servlet-name>
         <servlet-class>com.casaconectada.controller.sistemaLaylaDB</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SensorSV</servlet-name>
+        <servlet-class>com.casaconectada.controller.SensorSV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>casaConectadaSV</servlet-name>
         <url-pattern>/casaConectadaSV</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>sistemaLaylaDB</servlet-name>
         <url-pattern>/sistemaLaylaDB</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SensorSV</servlet-name>
+        <url-pattern>/SensorSV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
