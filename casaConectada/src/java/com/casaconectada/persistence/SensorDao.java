@@ -123,12 +123,12 @@ public class SensorDao {
             
            if(rs.next()){
                 sensor = new Sensor.SensorStatic();
-                sensor.setId(rs.getInt("id"));
-                sensor.setDistancia(rs.getString("distancia"));
-                sensor.setTempoAtual(rs.getString("tempoatual"));
-                sensor.setCont(rs.getString("cont"));
-                sensor.setData(rs.getString("data"));
-                sensor.setHora(rs.getString("hora"));
+                Sensor.SensorStatic.setId(rs.getInt("id"));
+                Sensor.SensorStatic.setDistancia(rs.getString("distancia"));
+                Sensor.SensorStatic.setTempoAtual(rs.getString("tempoatual"));
+                Sensor.SensorStatic.setCont(rs.getString("cont"));
+                Sensor.SensorStatic.setData(rs.getString("data"));
+                Sensor.SensorStatic.setHora(rs.getString("hora"));
                                
                      
             }
