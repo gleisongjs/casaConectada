@@ -1,8 +1,9 @@
 <%-- 
-    Document   : index
-    Created on : 24/02/2017, 21:15:44
-    Author     : Gleisongjs
+    Document   : twittaConexaoDB
+    Created on : 07/12/2017, 15:18:44
+    Author     : trnsformers
 --%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -64,43 +65,23 @@
         <script src="public/js/locastyle.js" type="text/javascript"></script>
         <script type="text/javascript" src="public/js/jquery-1.9.1.min.js"></script>
 
-       <main class="ls-main ">
+        <main class="ls-main ">
             <div class="container">
-                <h1 class="ls-title-intro ls-ico-home">Página inicial</h1>
+                <h1 class="ls-title-intro ls-ico-cloud">Banco de dados</h1>
                 <div class="col-md-12">
-                    <ul class="list-group">
-                        <li class="list-group-item">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><span class="glyphicon glyphicon-sort-by-attributes"></span> Lista</div>
+                        <div class="panel-body">
+                            <div class="form-group">
 
-
-                            <img data-u="image" src="public/img/sensor.JPG"  alt="sensor" class="img-responsive center-block"/>
-                            <div class="caption">
-                                <h2 class="ls-title-2">Funcionamento do Sistema </h2>
-                                <p class="text-justify lead"> O sensor que está na parede, apontado para o solo, está constantemente medindo a distância. 
-                                    Quando a distância é menor que 75 cm (normalmente quando a layla coloca as duas patas superiores na parede
-                                    na direção do sensor), o sistema libera água durante 5 segundos, envia um twitter informando detalhes e permanece 
-                                    indisponível para liberar água por proximidade nas próximas 04 horas.</p>
+                                ${resultado}                
                             </div>
-
-                        </li>
-
-                        <li class="list-group-item">   
-
-                            <img data-u="image" src="public/img/layla.JPG" alt="layla" class="img-responsive center-block"/> 
-                            <div class="caption">
-                                <h2 class="ls-title-2">Labrador retriever</h2>
-
-                                <p class="text-justify lead" > A layla é uma cachorra da raça labrador retriever. Essa é uma raça canina 
-                                    originária de Labrador no Canadá. Utilizado originalmente para a caça de aves aquáticas, 
-                                    o labrador é conhecido como uma raça versátil, inteligente e dócil. </p>
-                            </div>
-
-                        </li>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </main>
         <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
-           
+    </div>        
 </body>
 </html>
-

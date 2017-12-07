@@ -16,6 +16,10 @@
         <servlet-name>SensorSV</servlet-name>
         <servlet-class>com.casaconectada.controller.SensorSV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>twittaConexaoDB</servlet-name>
+        <servlet-class>com.casaconectada.controller.twittaConexaoDB</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>casaConectadaSV</servlet-name>
         <url-pattern>/casaConectadaSV</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>SensorSV</servlet-name>
         <url-pattern>/SensorSV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>twittaConexaoDB</servlet-name>
+        <url-pattern>/twittaConexaoDB</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

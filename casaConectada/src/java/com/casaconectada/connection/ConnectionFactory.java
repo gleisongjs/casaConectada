@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.casaconectada.connection;
 
 import java.sql.Connection;
@@ -22,7 +18,8 @@ public class ConnectionFactory {
       
     private final static String SERVIDOR = "localhost";
     //private final static String SERVIDOR = "192.168.0.14";  
-    private final static String BANCO_DADOS = "arduino";
+    //private final static String BANCO_DADOS = "arduino";
+    private final static String BANCO_DADOS = "postgres";
     private final static String PORTA = "5432";   
     private final static String USUARIO = "gleisongjs";   
     private final static String SENHA = "jsilva996";

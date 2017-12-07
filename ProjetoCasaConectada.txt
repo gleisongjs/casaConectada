@@ -1,0 +1,58 @@
+Projeto casaConectada dia 11/04
+
+- tentando integrar o banco de dados no sistema
+para isso foi criado uma branch db no git para poder trabalhar em
+ paralelo com o projeto que está funcionando.
+
+Projeto casaConectada dia 12/04
+
+
+- bd funcional, com código escrito em casaConectadaSV. havia um erro
+e o banco não estava gravando, o erro era no postgres, o tipo da variavel
+id era interger, quando o certo é serial.
+
+
+Projeto casaConectada dia 13/04
+
+instalado postgres no servidor 
+cp /home/transformers/casaConectada/casaConectada/dist/casaConectada.war /var/lib/tomcat7/webapps
+
+
+
+Projeto casaConectada dia 14/04
+
+inserindo data e hora db
+
+- utilizando as bibliotecas java.util.Date e  SimpleDateFormat;
+- encontrado algumas dificuldades para mandar os parametros para o objeto, servidor e página novamente.
+- ao fazer várias merges no git o projeto começou a bagunçar.
+- a página está muito lenta para listar o db
+
+Projeto casaConectada dia 15/04
+
+- listando somente os 100 ultimos registros com SELECT * FROM sensor ORDER BY id DESC LIMIT 100
+- alterado o banco para /home/transformers/dblayla no servidor
+- copiado a pasta cp -pR /var/lib/postgresql /home/transformers/layladb
+- apontado /home/tranformers/layladb/postgresql/9.6/main
+
+
+Projeto casaConectada dia 06/06
+
+
+- criado branch alterar
+- criado classe SensorAction
+- alterado SensorDao
+- git branch -a (lista as branchs)
+
+Projeto casaConectada dia 25/07
+
+- alterado o ícone labrador.png
+
+Projeto casaConectada dia 07/12
+
+- Para rodar o projeto no ubuntu é necessário parar o tomcat primeiro
+- Criado servelet twittaConexãodb
+- Criado jsp twittaConexãodb para receber os dados da tabela mac
+
+
+
