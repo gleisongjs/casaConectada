@@ -15,6 +15,8 @@ id era interger, quando o certo é serial.
 Projeto casaConectada dia 13/04
 
 instalado postgres no servidor 
+
+- comando para atualizar o arquivo war no servidor, após o git pull
 cp /home/transformers/casaConectada/casaConectada/dist/casaConectada.war /var/lib/tomcat7/webapps
 
 
@@ -53,6 +55,13 @@ Projeto casaConectada dia 07/12
 - Para rodar o projeto no ubuntu é necessário parar o tomcat primeiro
 - Criado servelet twittaConexãodb
 - Criado jsp twittaConexãodb para receber os dados da tabela mac
+
+Projeto casaConectada dia 08/12
+
+-Atualizado o projeto no servidor
+-Alterado a tabela sensor do banco arduino para o banco dispositivo
+
+
 
 
 
