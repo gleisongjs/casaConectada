@@ -1,7 +1,7 @@
 
 package com.casaconectada.connection;
 
-import java.sql.Connection;
+import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +19,7 @@ public class ConnectionFactory {
     private final static String SERVIDOR = "localhost";
     //private final static String SERVIDOR = "192.168.0.14";  
     //private final static String BANCO_DADOS = "arduino";
-    private final static String BANCO_DADOS = "postgres";
+    private final static String BANCO_DADOS = "dispositivo";
     private final static String PORTA = "5432";   
     private final static String USUARIO = "gleisongjs";   
     private final static String SENHA = "jsilva996";
