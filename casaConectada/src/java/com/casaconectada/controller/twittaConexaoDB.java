@@ -2,6 +2,7 @@
 package com.casaconectada.controller;
 
 import com.casaconectada.connection.ConnectionFactory;
+import com.casaconectada.entity.Dispositivo;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,7 +28,45 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
         response.setContentType("text/html;charset=UTF-8");
         
         String action = request.getParameter("action");
+        String msg = "";
+                     
+        //Incluindo dispositivo
+        if (action.equals ("incluidispositivo")){
         
+            if (!(msg.equals(request.getParameter("nome")) || request.getParameter("nome") == null)) {
+            Dispositivo.DispositivoStatic.setNome(request.getParameter("nome"));
+            Dispositivo.DispositivoStatic.setMac(request.getParameter("mac"));            
+        }
+        
+                                   
+        Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement ps = null;
+
+        String sql = "INSERT INTO mac (nome, mac) VALUES(?,?);";
+
+        try {
+
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, Dispositivo.DispositivoStatic.getNome());
+            ps.setString(2, Dispositivo.DispositivoStatic.getMac());
+            ps.executeUpdate();
+            //testdb = "Dispositivo Cadastrado com Sucesso";
+
+        } catch (SQLException ex) {
+            Logger.getLogger(casaConectadaSV.class.getName()).log(Level.SEVERE, null, ex);
+            //testdb = "Ops! deu ruim";
+            System.out.println(ex);
+        } finally {
+            ConnectionFactory.closeConnection(conn, ps);
+        }
+        
+        //request.setAttribute("resultado", res);
+        request.getRequestDispatcher("twittaConexaoDB.jsp").forward(request, response);
+            
+        }
+        
+                
+        //listando a tabela mac
         if (action.equals ("twittaconexaodb")){
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement ps = null;

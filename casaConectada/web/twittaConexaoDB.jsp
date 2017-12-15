@@ -27,6 +27,9 @@
         <!-- Ele funciona da mesma com toda a versão do jQuery 1.x para 2.x -->
         <script src="public/js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="public/js/jquery.min.js" type="text/javascript"></script>
+        <script src="public/js/bootstrap/bootstrap.min.js"></script>
+
+
     </head>
     <body>
 
@@ -65,10 +68,61 @@
         <script src="public/js/locastyle.js" type="text/javascript"></script>
         <script type="text/javascript" src="public/js/jquery-1.9.1.min.js"></script>
 
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h2 class="modal-title ls-ico-user-add" id="myModalLabel"> Adicionar Dispositivo</h2>
+                    </div>
+                    <div class="modal-body">  
+                        <div class="container col-md-12">                                       
+                            <!-- Begin # DIV Form -->
+                            <div id="div-forms">
+
+                                <!-- Begin # Login Form -->
+                                <div class="container col-md-4">
+                                </div>
+
+                                <div class="container col-md-4">
+
+                                    <form action="twittaConexaoDB?action=incluidispositivo" method="post" align="center"> 
+
+                                        <input id="nome" class="form-control" type="text" name="nome" placeholder="Nome do dispositivo" required>
+                                        <br/> 
+                                        <input id="mac" class="form-control" type="text" name="mac" placeholder="MAC do dispositivo" required>
+                                        <br/>
+                                </div>                        
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BOTÕES DE AÇÕES -->
+                    <div class="form-group">
+                        <div style="alignment-adjust: central" ><center>
+                                <span id="load"></span>
+                                <input type="submit" name="btnsubmit" class="btn btn-success" aria-label="Left Align">
+                                <input type="reset" name="btnreset" class="btn btn-danger" aria-label="Right Align">
+                            </center>
+                        </div>                                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- fim do modal-->
+
         <main class="ls-main ">
             <div class="container">
                 <h1 class="ls-title-intro ls-ico-cloud">Banco de dados</h1>
-                <div class="col-md-12">
+                <div class="col-md-12">                    
+
+                    <!--modal-->  
+                    <button type="button" class="btn btn-primary btn-lg ls-ico-plus" data-toggle="modal" data-target="#myModal">
+                        Novo Dispositivo
+                    </button>
                     <div class="panel panel-default">
                         <div class="panel-heading"><span class="glyphicon glyphicon-sort-by-attributes"></span> Lista</div>
                         <div class="panel-body">

@@ -64,7 +64,7 @@
         <script src="public/js/locastyle.js" type="text/javascript"></script>
         <script type="text/javascript" src="public/js/jquery-1.9.1.min.js"></script>
 
-       <main class="ls-main ">
+       <main class="ls-main ">           
             <div class="container">
                 <h1 class="ls-title-intro ls-ico-home">Página inicial</h1>
                 <div class="col-md-12">

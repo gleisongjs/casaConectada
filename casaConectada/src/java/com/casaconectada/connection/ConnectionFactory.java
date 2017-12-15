@@ -17,8 +17,8 @@ public class ConnectionFactory {
     private static Connection conn = null;
       
     private final static String SERVIDOR = "localhost";
-    //private final static String SERVIDOR = "192.168.0.14";  
-    //private final static String BANCO_DADOS = "arduino";
+    //private final static String BANCO_DADOS = "arduino"; //banco antigo
+    //private final static String BANCO_DADOS = "postgres";
     private final static String BANCO_DADOS = "dispositivo";
     private final static String PORTA = "5432";   
     private final static String USUARIO = "gleisongjs";   
