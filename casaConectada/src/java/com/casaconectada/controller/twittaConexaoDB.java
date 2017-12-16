@@ -38,7 +38,7 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
             Dispositivo.DispositivoStatic.setMac(request.getParameter("mac"));            
         }
         
-                                   
+        String res = "";                           
         Connection conn = ConnectionFactory.getConnection();
         PreparedStatement ps = null;
 
@@ -50,19 +50,20 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
             ps.setString(1, Dispositivo.DispositivoStatic.getNome());
             ps.setString(2, Dispositivo.DispositivoStatic.getMac());
             ps.executeUpdate();
-            //testdb = "Dispositivo Cadastrado com Sucesso";
+            res = "Dispositivo adicionado com sucesso";
 
         } catch (SQLException ex) {
             Logger.getLogger(casaConectadaSV.class.getName()).log(Level.SEVERE, null, ex);
             //testdb = "Ops! deu ruim";
             System.out.println(ex);
+            res = "Dispositivo não adicionado. Algo está errado!!!";
         } finally {
             ConnectionFactory.closeConnection(conn, ps);
         }
         
-        //request.setAttribute("resultado", res);
+        request.setAttribute("resultado", res);
         request.getRequestDispatcher("twittaConexaoDB.jsp").forward(request, response);
-            
+           
         }
         
                 
@@ -112,5 +113,7 @@ protected void service(HttpServletRequest request, HttpServletResponse response)
         
     }
 }
-
+public void chamaListar(){
+    
+}
 }

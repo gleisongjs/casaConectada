@@ -80,34 +80,39 @@
                         <h2 class="modal-title ls-ico-user-add" id="myModalLabel"> Adicionar Dispositivo</h2>
                     </div>
                     <div class="modal-body">  
-                        <div class="container col-md-12">                                       
+                        <div class="container-fluid col-md-12">                                       
                             <!-- Begin # DIV Form -->
                             <div id="div-forms">
 
                                 <!-- Begin # Login Form -->
-                                <div class="container col-md-4">
+                                <div class="container col-md-3">
                                 </div>
 
-                                <div class="container col-md-4">
+                                <div class="container col-md-6">
 
-                                    <form action="twittaConexaoDB?action=incluidispositivo" method="post" align="center"> 
+
+                                    <form action="twittaConexaoDB?action=incluidispositivo" method="post" > 
 
                                         <input id="nome" class="form-control" type="text" name="nome" placeholder="Nome do dispositivo" required>
                                         <br/> 
                                         <input id="mac" class="form-control" type="text" name="mac" placeholder="MAC do dispositivo" required>
                                         <br/>
-                                </div>                        
+
+                                        <div class="container col-md-3">
+                                        </div>
+                                </div>
                             </div>
+
                         </div>
-                    </div>
-                    <!-- BOTÕES DE AÇÕES -->
-                    <div class="form-group">
-                        <div style="alignment-adjust: central" ><center>
-                                <span id="load"></span>
-                                <input type="submit" name="btnsubmit" class="btn btn-success" aria-label="Left Align">
-                                <input type="reset" name="btnreset" class="btn btn-danger" aria-label="Right Align">
-                            </center>
-                        </div>                                   
+                        <!-- BOTÕES DE AÇÕES -->
+                        <div class="form-group">
+                            <div style="alignment-adjust: central" ><center>
+                                    <span id="load"></span>
+                                    <input type="submit" name="btnsubmit" class="btn btn-success" aria-label="Left Align">
+                                    <input type="reset" name="btnreset" class="btn btn-danger" aria-label="Right Align">
+                                </center>
+                            </div>                                   
+                        </div>
                     </div>
                 </div>
             </div>
