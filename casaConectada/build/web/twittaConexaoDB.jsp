@@ -67,9 +67,29 @@
         <script type="text/javascript" src="public/lib/jquery.min.js"></script>
         <script src="public/js/locastyle.js" type="text/javascript"></script>
         <script type="text/javascript" src="public/js/jquery-1.9.1.min.js"></script>
+     <!--   <div id="top" class="row">
+    <div class="col-md-3">
+        <h2>Itens</h2>
+    </div>
+ 
+    <div class="col-md-6">
+        <div class="input-group h2">
+            <input name="data[search]" class="form-control" id="search" type="text" placeholder="Pesquisar Itens">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+        </div>
+    </div>
+ 
+    <div class="col-md-3">
+        <a href="add.html" class="btn btn-primary pull-right h2">Novo Item</a>
+    </div>
+</div>  /#top -->
+        
 
-
-        <!-- Modal -->
+        <!-- Modal Adicionar-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -91,7 +111,7 @@
                                 <div class="container col-md-6">
 
 
-                                    <form action="twittaConexaoDB?action=incluidispositivo" method="post" > 
+                                    <form action="twittaConexaoDB?action=incluidispositivo" method="post"> 
 
                                         <input id="nome" class="form-control" type="text" name="nome" placeholder="Nome do dispositivo" required>
                                         <br/> 
@@ -113,34 +133,107 @@
                                 </center>
                             </div>                                   
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
         <!-- fim do modal-->
 
-        <main class="ls-main ">
-            <div class="container">
-                <h1 class="ls-title-intro ls-ico-cloud">Banco de dados</h1>
-                <div class="col-md-12">                    
+        <!-- Modal Editar-->
+        <div class="modal fade" id="myModalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalEditarLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h2 class="modal-title ls-ico-pencil2" id="myModalEditarLabel"> Editar Dispositivo</h2>
+                    </div>
+                    <div class="modal-body">  
+                        <div class="panel-body">                            
+                            <!-- Begin # DIV Form -->
+                            <div id="div-forms">
 
+                                <!-- Begin # Login Form -->
+                                <form action="twittaConexaoDB?action=buscaID" method="post"> 
+                                    <div class="form-group container-fluid col-md-12">
+                                        <div class="container col-md-3"></div>
+                                        <div class="container col-md-2">
+                                            <input id="id" class="form-control" type="text" name="id" placeholder="ID" required> 
+                                        </div>
+                                        <div class="container col-md-2">
+                                            <button type="button" class="btn btn-info btn-info ls-ico-search" >
+                                                
+                                                Buscar                                                
+                                            </button>  
+                                        </div>  
+                                        <div class="container col-md-5"></div> 
+                                    </div>
+                                  <!--  <div class="form-group container-fluid col-md-12 ">                                                                
+                                        <div class="container col-md-3"></div> 
+                                        <div class="container col-md-9">
+                                            <input id="nome" class="form-control" type="text" name="nome" placeholder="Nome do dispositivo" required>
+                                            <br/> </div>
+                                        <div class="container col-md-3"></div>
+                                        <div class="container col-md-9">
+                                            <input id="mac" class="form-control" type="text" name="mac" placeholder="MAC do dispositivo" required>
+                                            <br/></div> 
+                                    </div>-->
+                            </div>
+                        </div>
+
+
+                        <!-- BOTÕES DE AÇÕES -->
+                        <div class="form-group">
+                            <div style="alignment-adjust: central" ><center>
+                                    <span id="load"></span>
+                                    <input type="submit" name="btnsubmit" class="btn btn-success" aria-label="Left Align">
+                                    <input type="reset" name="btnreset" class="btn btn-danger" aria-label="Right Align">
+                                </center>
+                            </div>                                   
+                        </div>
+                        </form>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    <!-- fim do modal-->
+
+    <main class="ls-main ">
+        <div class="container">
+            <h1 class="ls-title-intro ls-ico-cloud">Banco de dados</h1>
+            <div class="col-md-12">
+                <div class="col-md-3">
                     <!--modal-->  
                     <button type="button" class="btn btn-primary btn-lg ls-ico-plus" data-toggle="modal" data-target="#myModal">
                         Novo Dispositivo
+                    </button>                        
+                </div>
+                <div class="col-md-3">
+                    <!--modal-->  
+                    <button type="button" class="btn btn-primary btn-lg ls-ico-pencil" data-toggle="modal" data-target="#myModalEditar">
+                        Editar Dispositivo
                     </button>
-                    <div class="panel panel-default">
-                        <div class="panel-heading"><span class="glyphicon glyphicon-sort-by-attributes"></span> Lista</div>
-                        <div class="panel-body">
-                            <div class="form-group">
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="col-md-12">                    
+                <div class="panel panel-default">
+                    <div class="panel-heading"><span class="glyphicon glyphicon-sort-by-attributes"></span> Lista</div>
+                    <div class="panel-body">
+                        <div class="form-group">
 
-                                ${resultado}                
-                            </div>
+                            ${resultado}                
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
-        <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
-    </div>        
+        </div>
+    </main>
+    <!-- Nome do produto/marca sem sidebar quando for o pre-painel  -->
+</div>        
 </body>
 </html>

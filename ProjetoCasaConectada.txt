@@ -61,6 +61,16 @@ Projeto casaConectada dia 08/12
 -Atualizado o projeto no servidor
 -Alterado a tabela sensor do banco arduino para o banco dispositivo
 
+Projeto casaConectada dia 15/12
+
+- Criado um modal para incluir novo dispositivo
+- alterado customizado.css
+
+Projeto casaConectada dia 18/12
+
+- Criado um modal e um button para alterar usuário
+
+
 
 
 
