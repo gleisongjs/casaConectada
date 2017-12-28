@@ -156,7 +156,7 @@
                             <div id="div-forms">
 
                                 <!-- Begin # Login Form -->
-                                <form action="twittaConexaoDB?action=incluidispositivo" method="post"> 
+                                <form action="twittaConexaoDB?action=editadispositivo" method="post"> 
                                     <div class="form-group container-fluid col-md-12">
                                         <div class="container col-md-3"></div>
                                         <div class="container col-md-2">
