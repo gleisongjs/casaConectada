@@ -156,7 +156,7 @@
                             <div id="div-forms">
 
                                 <!-- Begin # Login Form -->
-                                <form action="twittaConexaoDB?action=buscaID" method="post"> 
+                                <form action="twittaConexaoDB?action=incluidispositivo" method="post"> 
                                     <div class="form-group container-fluid col-md-12">
                                         <div class="container col-md-3"></div>
                                         <div class="container col-md-2">
@@ -170,7 +170,7 @@
                                         </div>  
                                         <div class="container col-md-5"></div> 
                                     </div>
-                                  <!--  <div class="form-group container-fluid col-md-12 ">                                                                
+                                    <div class="form-group container-fluid col-md-12 ">                                                                
                                         <div class="container col-md-3"></div> 
                                         <div class="container col-md-9">
                                             <input id="nome" class="form-control" type="text" name="nome" placeholder="Nome do dispositivo" required>
@@ -179,7 +179,7 @@
                                         <div class="container col-md-9">
                                             <input id="mac" class="form-control" type="text" name="mac" placeholder="MAC do dispositivo" required>
                                             <br/></div> 
-                                    </div>-->
+                                    </div>
                             </div>
                         </div>
 
