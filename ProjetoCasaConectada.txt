@@ -69,6 +69,15 @@ Projeto casaConectada dia 15/12
 Projeto casaConectada dia 18/12
 
 - Criado um modal e um button para alterar usuário
+- criado um buscar dispositivo dentro do modal
+- Falta preencher o modal com os dados encontrados pelo id
+
+Projeto casaConectada dia 30/12
+
+- Inserindo um painel de imagens, para alterar a pagina inicial
+- utilizando o carousel do bootstrap
+
+
 
 
 

@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html class="ls-theme-blue" lang="pt-br">
     <head>
         <title>Casa Conectada</title>
         <meta charset="utf-8">

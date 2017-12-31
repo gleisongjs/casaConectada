@@ -7,7 +7,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html class="ls-theme-blue" lang="pt-br">
     <head>
         <title>Casa Conectada</title>
         <meta charset="utf-8">
@@ -28,6 +28,8 @@
         <script src="public/js/jquery-1.9.1.min.js" type="text/javascript"></script>
         <script src="public/js/jquery.min.js" type="text/javascript"></script>
         <script src="public/js/bootstrap/bootstrap.min.js"></script>
+       
+        
 
 
     </head>
