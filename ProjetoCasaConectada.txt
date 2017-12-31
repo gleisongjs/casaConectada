@@ -76,6 +76,9 @@ Projeto casaConectada dia 30/12
 
 - Inserindo um painel de imagens, para alterar a pagina inicial
 - utilizando o carousel do bootstrap
+- utilizado os seguintes modelos:
+https://codepen.io/Rowno/pen/Afykb; e 
+http://getbootstrap.com.br/v4/components/carousel/#carouselcycle
 
 
 
